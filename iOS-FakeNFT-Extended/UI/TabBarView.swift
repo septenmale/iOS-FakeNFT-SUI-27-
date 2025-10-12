@@ -15,7 +15,6 @@ struct TabBarView: View {
                         image: "profile"
                     )
                 }
-                .backgroundStyle(.background)
             
             CatalogView()
                 .tabItem {
@@ -24,8 +23,6 @@ struct TabBarView: View {
                         image: "catalog"
                     )
                 }
-                .backgroundStyle(.background)
-                .foregroundStyle(.black)
             
             CartView()
                 .tabItem {
@@ -34,7 +31,6 @@ struct TabBarView: View {
                         image: "basket"
                     )
                 }
-                .backgroundStyle(.background)
             
             StatsView()
                 .tabItem {
@@ -43,7 +39,6 @@ struct TabBarView: View {
                         image: "statistics"
                     )
                 }
-                .backgroundStyle(.background)
         }
     }
 }
