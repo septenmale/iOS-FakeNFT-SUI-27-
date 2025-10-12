@@ -1,16 +1,44 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
+    init() {
+        UITabBar.appearance().unselectedItemTintColor = .black
+    }
+    
     var body: some View {
         TabView {
-            TestCatalogView()
+            ProfileView()
+                .tabItem {
+                    Label(
+                        NSLocalizedString("Tab.profile", comment: ""),
+                        image: "profile"
+                    )
+                }
+            
+            CatalogView()
                 .tabItem {
                     Label(
                         NSLocalizedString("Tab.catalog", comment: ""),
-                        systemImage: "square.stack.3d.up.fill"
+                        image: "catalog"
                     )
                 }
-                .backgroundStyle(.background)
+            
+            CartView()
+                .tabItem {
+                    Label(
+                        NSLocalizedString("Tab.cart", comment: ""),
+                        image: "basket"
+                    )
+                }
+            
+            StatsView()
+                .tabItem {
+                    Label(
+                        NSLocalizedString("Tab.stats", comment: ""),
+                        image: "statistics"
+                    )
+                }
         }
     }
 }

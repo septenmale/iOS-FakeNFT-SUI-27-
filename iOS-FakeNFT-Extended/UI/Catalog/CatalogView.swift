@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TestCatalogView: View {
+struct CatalogView: View {
     @Environment(ServicesAssembly.self) var servicesAssembly
     @State private var presentingNft = false
 
