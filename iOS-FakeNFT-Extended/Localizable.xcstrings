@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "(%lld)" : {
+
+    },
+    "%@" : {
+
+    },
     "Catalog.openNft" : {
       "localizations" : {
         "ru" : {
@@ -54,10 +60,10 @@
     "Hello, CartView!" : {
 
     },
-    "Hello, ProfileView!" : {
+    "Hello, StatsView!" : {
 
     },
-    "Hello, StatsView!" : {
+    "Joaquin Phoenix.com" : {
 
     },
     "Tab.cart" : {
@@ -102,6 +108,12 @@
           }
         }
       }
+    },
+    "Избранные NFT" : {
+
+    },
+    "Мои NFT" : {
+
     }
   },
   "version" : "1.0"
