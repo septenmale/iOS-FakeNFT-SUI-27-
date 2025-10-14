@@ -30,7 +30,7 @@ struct CartCell: View {
     private var infoSection: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(item.name)
-                .font(Font(UIFont.bold17))
+                .font(.bold17)
                 .padding(.bottom, 6)
             
             HStack(spacing: 2) {
@@ -43,11 +43,11 @@ struct CartCell: View {
             .padding(.bottom, 14)
             
             Text(String(localized: "Price"))
-                .font(Font(UIFont.regular13))
+                .font(.regular13)
                 .padding(.bottom, 4)
             
             Text("\(item.price, specifier: "%.2f") ETH")
-                .font(Font(UIFont.bold17))
+                .font(.bold17)
         }
         .foregroundColor(Color(UIColor.segmentActive))//TODO: по тз
     }
