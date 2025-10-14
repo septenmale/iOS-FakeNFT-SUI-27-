@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "%.2f ETH" : {
+
+    },
     "Catalog.openNft" : {
       "localizations" : {
         "ru" : {
@@ -51,14 +54,21 @@
         }
       }
     },
-    "Hello, CartView!" : {
-
-    },
     "Hello, ProfileView!" : {
 
     },
     "Hello, StatsView!" : {
 
+    },
+    "Price" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цена"
+          }
+        }
+      }
     },
     "Tab.cart" : {
       "extractionState" : "manual",
