@@ -3,6 +3,9 @@ import SwiftUI
 @Observable
 final class CartViewModel {
     var items: [CartItem] = MockItems.items
+    var totalPrice: Double {
+        items.reduce(0) { $0 + $1.price }
+    }
 }
 
 struct MockItems {

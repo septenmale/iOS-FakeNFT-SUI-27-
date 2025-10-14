@@ -49,7 +49,7 @@ struct CartCell: View {
             Text("\(item.price, specifier: "%.2f") ETH")
                 .font(.bold17)
         }
-        .foregroundColor(Color(UIColor.segmentActive))//TODO: по тз
+        .foregroundColor(Color(UIColor.segmentActive))
     }
     
     private var deleteIcon: some View {

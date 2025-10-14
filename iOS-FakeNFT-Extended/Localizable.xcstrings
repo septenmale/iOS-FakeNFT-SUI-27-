@@ -4,6 +4,9 @@
     "%.2f ETH" : {
 
     },
+    "%lld NFT" : {
+
+    },
     "Catalog.openNft" : {
       "localizations" : {
         "ru" : {
@@ -109,6 +112,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Статистика"
+          }
+        }
+      }
+    },
+    "To payment" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "К оплате"
           }
         }
       }
