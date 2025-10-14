@@ -12,9 +12,13 @@ struct CartView: View {
     }
     
     var body: some View {
-        VStack {
-            nftList
-            totalSection
+        if viewModel.items.isEmpty {
+            emptyCartView
+        } else {
+            VStack {
+                nftList
+                totalSection
+            }
         }
     }
     
@@ -31,6 +35,16 @@ struct CartView: View {
         .padding(.top, 20)
     }
     
+    private var emptyCartView: some View {
+        VStack {
+            Spacer()
+            Text(String(localized: "Cart is empty"))
+                .font(.bold17)
+                .foregroundColor(.black) //TODO: ЗАМЕНИТЬ ЦВЕТ
+            Spacer()
+        }
+    }
+    
     private var totalSection: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
@@ -42,11 +56,9 @@ struct CartView: View {
                     .font(.bold17)
                     .foregroundColor(.green)
             }
-            
             Spacer()
-            
-            Button {
-            } label: {
+            Button {}
+            label: {
                 Text(String(localized: "To payment"))
                     .font(.bold17)
                     .foregroundColor(.white) //TODO: ЗАМЕНИТЬ ЦВЕТ
@@ -63,6 +75,6 @@ struct CartView: View {
 }
 
 #Preview {
-    CartView()
+   CartView()
 }
 

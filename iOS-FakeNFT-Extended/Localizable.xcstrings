@@ -7,6 +7,16 @@
     "%lld NFT" : {
 
     },
+    "Cart is empty" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Корзина пуста"
+          }
+        }
+      }
+    },
     "Catalog.openNft" : {
       "localizations" : {
         "ru" : {
