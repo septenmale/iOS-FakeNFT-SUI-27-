@@ -12,7 +12,6 @@ struct CatalogView: View {
             Text(Constants.openNftTitle)
                 .tint(.blue)
         }
-//        .background(.Day.black)
         .backgroundStyle(.background)
         .sheet(isPresented: $presentingNft) {
             NftDetailBridgeView()
