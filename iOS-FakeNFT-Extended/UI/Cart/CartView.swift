@@ -57,8 +57,8 @@ struct CartView: View {
         }
         .padding(.horizontal, 16)
         .frame(height: SizeConstants.totalSectionHeight)
-        .cornerRadius(SizeConstants.totalSectionRadius)
         .background(Color(UIColor.segmentInactive))
+        .cornerRadius(SizeConstants.totalSectionRadius, corners: [.topLeft, .topRight])
     }
 }
 
