@@ -5,12 +5,14 @@ struct CatalogView: View {
     @State private var presentingNft = false
 
     var body: some View {
+        
         Button {
             showNft()
         } label: {
             Text(Constants.openNftTitle)
                 .tint(.blue)
         }
+//        .background(.Day.black)
         .backgroundStyle(.background)
         .sheet(isPresented: $presentingNft) {
             NftDetailBridgeView()
