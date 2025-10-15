@@ -22,6 +22,7 @@ struct StatsView: View {
             statsScrollView
             .padding(.horizontal, 16)
             .padding(.top, 20)
+            .background(Color.yaWhite)
             
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
