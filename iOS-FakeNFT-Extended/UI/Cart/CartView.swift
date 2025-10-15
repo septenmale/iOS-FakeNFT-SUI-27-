@@ -40,7 +40,7 @@ struct CartView: View {
             Spacer()
             Text(String(localized: "Cart is empty"))
                 .font(.bold17)
-                .foregroundColor(.black) //TODO: ЗАМЕНИТЬ ЦВЕТ
+                .foregroundColor(.yaBlack)
             Spacer()
         }
     }
@@ -50,7 +50,7 @@ struct CartView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("\(viewModel.items.count) NFT")
                     .font(.regular15)
-                    .foregroundColor(Color(UIColor.segmentActive))
+                    .foregroundColor(.uniBackground)
                 
                 Text("\(viewModel.totalPrice, specifier: "%.2f") ETH")
                     .font(.bold17)
@@ -61,15 +61,15 @@ struct CartView: View {
             label: {
                 Text(String(localized: "To payment"))
                     .font(.bold17)
-                    .foregroundColor(.white) //TODO: ЗАМЕНИТЬ ЦВЕТ
+                    .foregroundColor(.yaWhite)
                     .frame(width: SizeConstants.buttonWidth, height: SizeConstants.buttonHeight)
-                    .background(.black) //TODO: ЗАМЕНИТЬ ЦВЕТ
+                    .background(.yaBlack) 
                     .cornerRadius(SizeConstants.buttonRadius)
             }
         }
         .padding(.horizontal, 16)
         .frame(height: SizeConstants.totalSectionHeight)
-        .background(Color(UIColor.segmentInactive))
+        .background(.yaLightGrey)
         .cornerRadius(SizeConstants.totalSectionRadius, corners: [.topLeft, .topRight])
     }
 }

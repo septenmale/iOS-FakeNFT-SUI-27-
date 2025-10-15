@@ -37,7 +37,7 @@ struct CartCell: View {
                 ForEach(0..<5) { index in
                     Image("star")
                         .renderingMode(.template)
-                        .foregroundColor(index < item.rating ? .yellow : Color(UIColor.segmentInactive))
+                        .foregroundColor(index < item.rating ? .yellow : .yaLightGrey)
                 }
             }
             .padding(.bottom, 14)
@@ -49,12 +49,12 @@ struct CartCell: View {
             Text("\(item.price, specifier: "%.2f") ETH")
                 .font(.bold17)
         }
-        .foregroundColor(Color(UIColor.segmentActive))
+        .foregroundColor(.yaBlack)
     }
     
     private var deleteIcon: some View {
         Image("cartOn")
-            .foregroundColor(Color(UIColor.segmentActive))
+            .foregroundColor(.yaBlack)
     }
 }
 
