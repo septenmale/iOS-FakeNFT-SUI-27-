@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
     "Catalog.openNft" : {
       "localizations" : {
         "ru" : {
@@ -57,9 +63,6 @@
     "Hello, ProfileView!" : {
 
     },
-    "Hello, StatsView!" : {
-
-    },
     "Tab.cart" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -102,6 +105,18 @@
           }
         }
       }
+    },
+    "Закрыть" : {
+
+    },
+    "По имени" : {
+
+    },
+    "По рейтингу" : {
+
+    },
+    "Сортировка" : {
+
     }
   },
   "version" : "1.0"
