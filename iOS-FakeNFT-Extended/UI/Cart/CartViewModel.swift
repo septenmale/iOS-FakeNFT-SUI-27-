@@ -2,9 +2,17 @@ import SwiftUI
 
 @Observable
 final class CartViewModel {
+   
     var items: [CartItem] = MockItems.items
+    
     var totalPrice: Double {
         items.reduce(0) { $0 + $1.price }
+    }
+    
+    func removeItem(_ item: CartItem) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            items.remove(at: index)
+        }
     }
 }
 

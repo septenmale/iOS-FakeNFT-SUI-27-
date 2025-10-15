@@ -1,13 +1,9 @@
 import SwiftUI
 
 struct CartCell: View {
-    
-    private enum SizeConstants {
-        static let imageSize: CGFloat = 108
-        static let imageCornerRadius: CGFloat = 12
-    }
-    
+
     let item: CartItem
+    let onDeleteTapped: () -> Void
     
     var body: some View {
         HStack(spacing: 20) {
@@ -16,15 +12,18 @@ struct CartCell: View {
             Spacer()
             deleteIcon
         }
+        .padding(16)
+        .contentShape(Rectangle())
+        .buttonStyle(.plain)
     }
     
     private var image: some View {
         Image(item.name)
             .resizable()
             .scaledToFill()
-            .frame(width: SizeConstants.imageSize, height: SizeConstants.imageSize)
+            .frame(width: CartSizeConstants.cellImageSize, height: CartSizeConstants.cellImageSize)
             .clipped()
-            .cornerRadius(SizeConstants.imageCornerRadius)
+            .cornerRadius(CartSizeConstants.cellImageCornerRadius)
     }
     
     private var infoSection: some View {
@@ -53,11 +52,14 @@ struct CartCell: View {
     }
     
     private var deleteIcon: some View {
-        Image("cartOn")
-            .foregroundColor(.yaBlack)
+        Button(action: onDeleteTapped) {
+            Image("cartOn")
+                .foregroundColor(.yaBlack)
+        }
+        .buttonStyle(.plain)
     }
 }
 
 #Preview {
-    CartCell(item: MockItems.items[0])
+    CartCell(item: MockItems.items[0], onDeleteTapped: {})
 }
