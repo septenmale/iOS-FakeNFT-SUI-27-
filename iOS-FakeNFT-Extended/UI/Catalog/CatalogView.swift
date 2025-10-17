@@ -5,51 +5,55 @@ struct CatalogView: View {
     @State private var isShowingSortOptions = false
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            ScrollView {
-                LazyVStack(spacing: 8) {
-                    Color.clear
-                        .frame(height: 35)
-                    
-                    ForEach(CatalogSample.catalog, id: \.id) { item in
-                        CatalogCell(item: item)
-                            .padding(.horizontal, 16)
-//                            .padding(.vertical, 8)
-                    }
-                }
-            }
-            
-            if isShowingSortOptions {
-                Color.black.opacity(0.3)
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            isShowingSortOptions = false
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                ScrollView {
+                    LazyVStack(spacing: 8) {
+                        Color.clear
+                            .frame(height: 35)
+                        
+                        ForEach(CatalogSample.catalog, id: \.id) { item in
+                            NavigationLink(destination: CollectionView(collection: item)) {
+                                CatalogCell(item: item)
+                                    .padding(.horizontal, 16)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
-                    .transition(.opacity)
-            }
-            
-            VStack {
+                }
+                
                 if isShowingSortOptions {
-                    SortPanelView(
-                        selectedSortOption: $selectedSortOption,
-                        isShowingSortOptions: $isShowingSortOptions
-                    )
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-                    
-                    CloseButtonView(isShowingSortOptions: $isShowingSortOptions)
+                    Color.black.opacity(0.3)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                isShowingSortOptions = false
+                            }
+                        }
+                        .transition(.opacity)
+                }
+                
+                VStack {
+                    if isShowingSortOptions {
+                        SortPanelView(
+                            selectedSortOption: $selectedSortOption,
+                            isShowingSortOptions: $isShowingSortOptions
+                        )
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        
+                        CloseButtonView(isShowingSortOptions: $isShowingSortOptions)
+                    }
                 }
             }
+            .navigationBarHidden(true)
+            .overlay(
+                sortButton
+                    .padding(.top, 2)
+                    .padding(.trailing, 9),
+                alignment: .topTrailing
+            )
+            .animation(.easeInOut(duration: 0.3), value: isShowingSortOptions)
         }
-        .navigationBarHidden(true)
-        .overlay(
-            sortButton
-                .padding(.top, 2)
-                .padding(.trailing, 9),
-            alignment: .topTrailing
-        )
-        .animation(.easeInOut(duration: 0.3), value: isShowingSortOptions)
     }
     
     private func section(title: String, items: [String]) -> some View {
@@ -111,29 +115,3 @@ enum SortOption {
 #Preview {
     CatalogView()
 }
-//struct CatalogView: View {
-//    @Environment(ServicesAssembly.self) var servicesAssembly
-//    @State private var presentingNft = false
-//
-//    var body: some View {
-//
-//        Button {
-//            showNft()
-//        } label: {
-//            Text(Constants.openNftTitle)
-//                .tint(.blue)
-//        }
-//        .backgroundStyle(.background)
-//        .sheet(isPresented: $presentingNft) {
-//            NftDetailBridgeView()
-//        }
-//    }
-//
-//    func showNft() {
-//        presentingNft = true
-//    }
-//}
-//
-//private enum Constants {
-//    static let openNftTitle = NSLocalizedString("Catalog.openNft", comment: "")
-//}
