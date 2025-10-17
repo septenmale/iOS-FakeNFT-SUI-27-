@@ -48,8 +48,7 @@ struct SortPanelView: View {
         }) {
             HStack {
                 Text(title)
-                //TODO: добавить regular20
-                    .font(.regular17)
+                    .font(.regular20)
                     .foregroundColor(.uniBlue)
             }
             .padding(.horizontal, 18)

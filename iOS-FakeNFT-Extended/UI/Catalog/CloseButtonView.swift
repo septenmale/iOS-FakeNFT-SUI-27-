@@ -10,8 +10,7 @@ struct CloseButtonView: View {
             }
         }) {
             Text("Закрыть")
-            //TODO: добавить bold20
-                .font(.bold22)
+                .font(.bold20)
                 .foregroundColor(.uniBlue)
                 .frame(maxWidth: .infinity)
                 .frame(height: 61)
