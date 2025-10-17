@@ -1,18 +1,34 @@
-import UIKit
+import SwiftUI
 
-extension UIFont {
+extension Font {
 
     // Medium Fonts
-    static var medium10 = UIFont.systemFont(ofSize: 10, weight: .medium)
+    static var medium10: Font {
+        Font.system(size: 10, weight: .medium)
+    }
     
     // Bold Fonts
-    static var bold17 = UIFont.systemFont(ofSize: 17, weight: .bold)
-    static var bold22 = UIFont.systemFont(ofSize: 22, weight: .bold)
-    static var bold32 = UIFont.systemFont(ofSize: 32, weight: .bold)
-    static var bold34 = UIFont.systemFont(ofSize: 34, weight: .bold)
-
+    static var bold17: Font {
+        Font.system(size: 17, weight: .bold)
+    }
+    static var bold22: Font {
+        Font.system(size: 22, weight: .bold)
+    }
+    static var bold32: Font {
+        Font.system(size: 32, weight: .bold)
+    }
+    static var bold34: Font {
+        Font.system(size: 34, weight: .bold)
+    }
+    
     // Regular Fonts
-    static var regular13 = UIFont.systemFont(ofSize: 13, weight: .regular)
-    static var regular15 = UIFont.systemFont(ofSize: 15, weight: .regular)
-    static var regular17 = UIFont.systemFont(ofSize: 17, weight: .regular)
+    static var regular13: Font {
+        Font.system(size: 13, weight: .regular)
+    }
+    static var regular15: Font {
+        Font.system(size: 15, weight: .regular)
+    }
+    static var regular17: Font {
+        Font.system(size: 17, weight: .regular)
+    }
 }
