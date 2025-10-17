@@ -1,12 +1,3 @@
-//
-//  CatalogCell.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Kira on 13.10.2025.
-//
-
-import SwiftUI
-
 import SwiftUI
 
 struct CatalogCell: View {
@@ -14,9 +5,7 @@ struct CatalogCell: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // Изображение коллекции
             ZStack {
-                // Фон для изображения
                 Rectangle()
                     .fill(Color.yaLightGrey)
                 
@@ -35,7 +24,7 @@ struct CatalogCell: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .lineLimit(1)
             }
-            .padding(.top, 8)
+            .padding(.top, 4)
         }
         .padding(.horizontal, -1)
         .padding(.vertical, 8)

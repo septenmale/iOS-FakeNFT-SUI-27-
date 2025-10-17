@@ -70,6 +70,9 @@
     "Hello, StatsView!" : {
 
     },
+    "Sorting" : {
+
+    },
     "Tab.cart" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -112,6 +115,12 @@
           }
         }
       }
+    },
+    "Закрыть" : {
+
+    },
+    "Сортировка" : {
+
     }
   },
   "version" : "1.0"

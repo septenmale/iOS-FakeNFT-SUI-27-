@@ -1,10 +1,3 @@
-//
-//  Collection.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Kira on 13.10.2025.
-//
-
 import SwiftUI
 import SwiftData
 
