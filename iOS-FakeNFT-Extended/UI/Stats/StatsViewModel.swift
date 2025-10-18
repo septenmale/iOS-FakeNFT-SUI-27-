@@ -14,7 +14,7 @@ struct User: Identifiable {
     let NFTCount: Int
 }
 
-enum StatsFilterStrategy {
+enum StatsFilterStrategy: String {
     case NFTCount
     case username
 }
@@ -44,7 +44,21 @@ enum StatsFilterStrategy {
     
     private(set) var users: [User] = []
     
-    private var filter: StatsFilterStrategy = .NFTCount
+    private var filter: StatsFilterStrategy {
+        get {
+            let storedData = UserDefaults.standard.string(forKey: "statsFilterStrategy")
+            
+            guard let storedData else {
+                return .NFTCount
+            }
+            
+            let filter = StatsFilterStrategy(rawValue: storedData) ?? .NFTCount
+            return  filter
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: "statsFilterStrategy")
+        }
+    }
     
     func setFilterStrategy(_ strategy: StatsFilterStrategy) {
         filter = strategy
@@ -89,7 +103,21 @@ enum StatsFilterStrategy {
         User(name: "Harry", image: Image(systemName: "person.circle.fill"), NFTCount: 876)
     ]
     
-    private var filter: StatsFilterStrategy = .NFTCount
+    private var filter: StatsFilterStrategy {
+        get {
+            let storedData = UserDefaults.standard.string(forKey: "statsFilterStrategy")
+            
+            guard let storedData else {
+                return .NFTCount
+            }
+            
+            let filter = StatsFilterStrategy(rawValue: storedData) ?? .NFTCount
+            return  filter
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: "statsFilterStrategy")
+        }
+    }
     
     func setFilterStrategy(_ strategy: StatsFilterStrategy) {
         filter = strategy
