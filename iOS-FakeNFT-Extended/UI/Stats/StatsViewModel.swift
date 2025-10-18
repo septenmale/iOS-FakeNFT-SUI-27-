@@ -19,7 +19,7 @@ enum StatsFilterStrategy: String {
     case username
 }
 
-@Observable class StatsViewModel: StatsViewModelProtocol {
+@Observable final class StatsViewModel: StatsViewModelProtocol {
     
     var showUserProfileView = false
 
@@ -71,7 +71,7 @@ enum StatsFilterStrategy: String {
     
 }
 
-@Observable class StatsViewModelMock: StatsViewModelProtocol {
+@Observable final class StatsViewModelMock: StatsViewModelProtocol {
 
     var showActionSheet = false
     
