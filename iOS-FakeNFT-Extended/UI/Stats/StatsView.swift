@@ -50,7 +50,7 @@ struct StatsView: View {
             }
             
             .navigationDestination(isPresented: $viewModel.showUserProfileView) {
-                let selectedUser = viewModel.selectedUser ?? User(name: "Unknown", image: Image(systemName: "person.circle.fill"), NFTCount: 0)
+                let selectedUser = viewModel.selectedUser ?? User(name: "Unknown", imageString: "person.circle.fill", NFTCount: 0)
                 StatsUserProfile(user: selectedUser)
             }
         }
@@ -77,9 +77,9 @@ struct StatsView: View {
                 Text("\(number)")
                     .font(countFont)
                     .frame(width: 20)
-                
+//                MARK: Временное решение, пока нет работы с сетью
                 StatsCell(userName: user.name,
-                          userImage: user.image,
+                          userImage: Image(systemName: user.imageString),
                           NFTCount: user.NFTCount)
             }
         }
