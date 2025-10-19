@@ -100,8 +100,15 @@ enum StatsFilterStrategy: String {
         User(name: "Martin", imageData: nil, NFTCount: 16),
         User(name: "Olga", imageData: nil, NFTCount: 132),
 //      MARK: данные иконки имитируют реальные изображения
-        User(name: "Garry", imageData: UIImage(systemName: "person.circle.fill")?.withTintColor(.uniRed).pngData(), NFTCount: 95),
-        User(name: "Harry", imageData: UIImage(systemName: "person.circle.fill")?.withTintColor(.uniBlue).pngData(), NFTCount: 876)
+        User(name: "Garry",
+             imageData: UIImage(systemName: "person.circle.fill",
+                                withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(.uniRed).heicData(),
+             NFTCount: 95),
+        
+        User(name: "Harry",
+             imageData: UIImage(systemName: "person.circle.fill",withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(.uniBlue).heicData(),
+             NFTCount: 876)
+        
     ]
     
     private var filter: StatsFilterStrategy {

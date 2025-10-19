@@ -29,16 +29,20 @@ struct StatsCell: View {
     }
     
     private var cellInfo: some View {
-        HStack(spacing: 8) {
-            Image(data: userImageData, placeholder: "person.circle.fill")
-                .resizable()
-                .scaledToFit()
+        GeometryReader { geometry in
+            HStack(spacing: 8) {
+                Image(data: userImageData, placeholder: "person.circle.fill")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: 28)
+                    .clipShape(Circle())
                 
-            Text(userName)
-                .font(textFont)
-            Spacer()
-            Text("\(NFTCount)")
-                .font(textFont)
+                Text(userName)
+                    .font(textFont)
+                Spacer()
+                Text("\(NFTCount)")
+                    .font(textFont)
+            }
         }
     }
 }
