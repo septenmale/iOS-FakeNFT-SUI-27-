@@ -19,7 +19,7 @@ struct StatsView: View {
     
     var body: some View {
         NavigationStack {
-            statsScrollView
+            statsListView
             .padding(.horizontal, 16)
             .padding(.top, 20)
             .background(Color.yaWhite)
@@ -56,14 +56,17 @@ struct StatsView: View {
         }
     }
     
-    private var statsScrollView: some View {
-        ScrollView {
-            LazyVStack(spacing: 8) {
-                ForEach(Array(viewModel.filteredUsers.enumerated()), id: \.element.id) { index, user in
-                    createCellButton(user: user, number: index + 1)
-                }
+    private var statsListView: some View {
+        List {
+            ForEach(Array(viewModel.filteredUsers.enumerated()), id: \.element.id) { index, user in
+                createCellButton(user: user, number: index + 1)
+                    .background(Color.yaWhite)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
         }
+        .listStyle(.plain)
+        .listRowSpacing(8)
     }
     
     private func createCellButton(user: User, number: Int) -> some View {
