@@ -10,7 +10,7 @@ import SwiftUI
 struct StatsCell: View {
     
     let userName: String
-    let userImage: Image
+    let userImageData: Data?
     
     let NFTCount: Int
     
@@ -30,9 +30,10 @@ struct StatsCell: View {
     
     private var cellInfo: some View {
         HStack(spacing: 8) {
-            userImage
+            Image(data: userImageData, placeholder: "person.circle.fill")
                 .resizable()
                 .scaledToFit()
+                
             Text(userName)
                 .font(textFont)
             Spacer()

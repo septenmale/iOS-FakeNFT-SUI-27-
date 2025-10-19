@@ -10,7 +10,7 @@ import SwiftUI
 struct User: Identifiable {
     let id: UUID = UUID()
     let name: String
-    let imageString: String
+    let imageData: Data?
     let NFTCount: Int
 }
 
@@ -95,12 +95,13 @@ enum StatsFilterStrategy: String {
     private(set) var selectedUser: User?
     
     private(set) var users: [User] = [
-        User(name: "Alex", imageString: "person.circle.fill", NFTCount: 32),
-        User(name: "Helen", imageString: "person.circle.fill", NFTCount: 21),
-        User(name: "Martin", imageString: "person.circle.fill", NFTCount: 16),
-        User(name: "Olga", imageString: "person.circle.fill", NFTCount: 132),
-        User(name: "Garry", imageString: "person.circle.fill", NFTCount: 95),
-        User(name: "Harry", imageString: "person.circle.fill", NFTCount: 876)
+        User(name: "Alex", imageData: nil, NFTCount: 32),
+        User(name: "Helen", imageData: nil, NFTCount: 21),
+        User(name: "Martin", imageData: nil, NFTCount: 16),
+        User(name: "Olga", imageData: nil, NFTCount: 132),
+//      MARK: данные иконки имитируют реальные изображения
+        User(name: "Garry", imageData: UIImage(systemName: "person.circle.fill")?.withTintColor(.uniRed).pngData(), NFTCount: 95),
+        User(name: "Harry", imageData: UIImage(systemName: "person.circle.fill")?.withTintColor(.uniBlue).pngData(), NFTCount: 876)
     ]
     
     private var filter: StatsFilterStrategy {
