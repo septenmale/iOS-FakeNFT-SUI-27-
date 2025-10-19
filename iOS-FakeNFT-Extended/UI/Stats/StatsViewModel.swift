@@ -106,7 +106,8 @@ enum StatsFilterStrategy: String {
              NFTCount: 95),
         
         User(name: "Harry",
-             imageData: UIImage(systemName: "person.circle.fill",withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(.uniBlue).heicData(),
+             imageData: UIImage(systemName: "person.circle.fill",
+                                withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(.uniBlue).heicData(),
              NFTCount: 876)
         
     ]
