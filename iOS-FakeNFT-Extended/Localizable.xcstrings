@@ -176,12 +176,32 @@
         }
       }
     },
+    "Return to cart" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вернуться в корзину"
+          }
+        }
+      }
+    },
     "Select payment method" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выберите способ оплаты"
+          }
+        }
+      }
+    },
+    "Success! Payment completed, congratulations on your purchase!" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Успех! Оплата прошла,\nпоздравляем с покупкой!"
           }
         }
       }

@@ -15,6 +15,16 @@ final class PaymentViewModel {
         guard selectedCurrencyId != currency.id else { return }
         selectedCurrencyId = currency.id
     }
+    
+    func payOrder() -> Bool { //Заглушка пока не подключены запросы
+        guard !selectedCurrencyId.isEmpty else {
+            return false
+        }
+        if selectedCurrencyId == "3" || selectedCurrencyId == "4" {
+            return false
+        }
+        return true
+    }
 }
 
 struct MockСurrencies {

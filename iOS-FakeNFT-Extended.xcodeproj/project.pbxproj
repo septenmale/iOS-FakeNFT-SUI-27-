@@ -57,6 +57,7 @@
 		F82D52752EA62F9C00FEF184 /* CartRequestsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52742EA62F8300FEF184 /* CartRequestsConstants.swift */; };
 		F82D52C02EA631AC00FEF184 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52BF2EA631A500FEF184 /* WebView.swift */; };
 		F82D52C22EA6376800FEF184 /* CartBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C12EA6375300FEF184 /* CartBackButton.swift */; };
+		F82D52C52EA6439E00FEF184 /* SuccessPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C42EA6438C00FEF184 /* SuccessPaymentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		F82D52742EA62F8300FEF184 /* CartRequestsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRequestsConstants.swift; sourceTree = "<group>"; };
 		F82D52BF2EA631A500FEF184 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		F82D52C12EA6375300FEF184 /* CartBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBackButton.swift; sourceTree = "<group>"; };
+		F82D52C42EA6438C00FEF184 /* SuccessPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPaymentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -166,6 +168,7 @@
 		2AC0A2772E9AAFFE007B226B /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				F82D52C32EA6437A00FEF184 /* SuccessPayment */,
 				F82D52C12EA6375300FEF184 /* CartBackButton.swift */,
 				F82D52BE2EA6319D00FEF184 /* WebView */,
 				F82D526F2EA24ED400FEF184 /* PaymentView */,
@@ -431,6 +434,14 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		F82D52C32EA6437A00FEF184 /* SuccessPayment */ = {
+			isa = PBXGroup;
+			children = (
+				F82D52C42EA6438C00FEF184 /* SuccessPaymentView.swift */,
+			);
+			path = SuccessPayment;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -583,6 +594,7 @@
 				F821ECC72E9FC4B60003AB8A /* EmptyCartView.swift in Sources */,
 				F82D52C02EA631AC00FEF184 /* WebView.swift in Sources */,
 				F821EC3A2E9D05900003AB8A /* CartViewModel.swift in Sources */,
+				F82D52C52EA6439E00FEF184 /* SuccessPaymentView.swift in Sources */,
 				ABC5E19D2C31F6A6002B4068 /* NftStorage.swift in Sources */,
 				F82D52722EA252C100FEF184 /* CarrencyCell.swift in Sources */,
 				F82D52752EA62F9C00FEF184 /* CartRequestsConstants.swift in Sources */,

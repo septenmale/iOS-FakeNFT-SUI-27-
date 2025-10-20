@@ -2,6 +2,8 @@ import SwiftUI
 
 struct PaymentView: View {
     @State var viewModel: PaymentViewModel
+    @State private var showPaymentErrorAlert = false
+    @State private var showSuccessView = false
     
     let columns: [GridItem] = [
         GridItem(.flexible()),
@@ -13,7 +15,6 @@ struct PaymentView: View {
             currencyList
             Spacer()
             payBlock
-            
         }
         .navigationTitle(String(localized: "Select payment method"))
         .navigationBarTitleDisplayMode(.inline)
@@ -84,7 +85,7 @@ struct PaymentView: View {
         let isDisabled = viewModel.selectedCurrencyId.isEmpty
         
         return Button(action: {
-           
+           pay()
         }) {
             Text(String(localized: "Pay"))
                 .font(.bold17)
@@ -96,6 +97,15 @@ struct PaymentView: View {
                 .opacity(isDisabled ? 0.6 : 1)
         }
         .disabled(isDisabled)
+        .fullScreenCover(isPresented: $showSuccessView) {
+            SuccessPaymentView {
+                showSuccessView = false
+            }
+        }
+    }
+    
+    func pay() {
+        showSuccessView = viewModel.payOrder()
     }
 }
 
