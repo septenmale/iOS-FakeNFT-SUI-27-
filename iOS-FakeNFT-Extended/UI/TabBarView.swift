@@ -3,7 +3,7 @@ import SwiftUI
 struct TabBarView: View {
     
     init() {
-        UITabBar.appearance().unselectedItemTintColor = .black
+        UITabBar.appearance().unselectedItemTintColor = .yaBlack
     }
     
     var body: some View {
@@ -32,7 +32,9 @@ struct TabBarView: View {
                     )
                 }
             
-            StatsView()
+//          MARK: на данный момент используются моковые данные для демонстрации работы
+            
+            StatsView(viewModel: StatsViewModelMock())
                 .tabItem {
                     Label(
                         NSLocalizedString("Tab.stats", comment: ""),
