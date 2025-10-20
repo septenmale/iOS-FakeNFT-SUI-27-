@@ -30,4 +30,10 @@ enum CartSizeConstants {
     // Общие константы для модальных кнопок
     static let modalButtonHeight: CGFloat = 44
     static let modalButtonRadius: CGFloat = 12
+    
+    // MARK: - Кнопки и Секции (PaymentView)
+    static let payButtonHeight: CGFloat = 60
+    static let payButtonRadius: CGFloat = 16
+    static let payBlockRadius: CGFloat = 12
+    
 }

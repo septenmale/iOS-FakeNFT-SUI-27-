@@ -2,7 +2,6 @@ import SwiftUI
 
 struct PaymentView: View {
     @State var viewModel: PaymentViewModel
-    @Environment(\.dismiss) private var dismiss
     
     let columns: [GridItem] = [
         GridItem(.flexible()),
@@ -13,18 +12,15 @@ struct PaymentView: View {
         VStack {
             currencyList
             Spacer()
+            payBlock
+            
         }
         .navigationTitle(String(localized: "Select payment method"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.primary)
-                }
+                CartBackButton(color: .yaBlack)
             }
         }
     }
@@ -43,6 +39,63 @@ struct PaymentView: View {
             .padding(.vertical, 20)
             .padding(.horizontal, 16)
         }
+    }
+    
+    private var payBlock: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            userAgreementSegment
+            payButton
+        }
+        .padding(16)
+        .background(
+            Color.yaLightGrey
+                .cornerRadius(CartSizeConstants.payBlockRadius, corners: [.topLeft, .topRight])
+                .ignoresSafeArea()
+        )
+    }
+    
+    private var userAgreementSegment: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(String(localized: "By making a purchase, you agree to the terms of the"))
+                .font(.regular13)
+                .foregroundColor(.yaBlack)
+            
+            NavigationLink {
+                WebView(url: URL(string: CartRequestsConstants.webViewURL))
+                    .navigationTitle(String(localized: "User agreement:"))
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+                    .toolbar(.hidden, for: .tabBar)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            CartBackButton(color: .yaBlack)
+                        }
+                    }
+                    .ignoresSafeArea()
+            } label: {
+                Text(String(localized: "User agreement"))
+                    .font(.regular13)
+                    .foregroundColor(.uniBlue)
+            }
+        }
+    }
+    
+    private var payButton: some View {
+        let isDisabled = viewModel.selectedCurrencyId.isEmpty
+        
+        return Button(action: {
+           
+        }) {
+            Text(String(localized: "Pay"))
+                .font(.bold17)
+                .foregroundColor(.yaWhite)
+                .frame(maxWidth: .infinity)
+                .frame(height: CartSizeConstants.payButtonHeight)
+                .background(.yaBlack)
+                .cornerRadius(CartSizeConstants.payButtonRadius)
+                .opacity(isDisabled ? 0.6 : 1)
+        }
+        .disabled(isDisabled)
     }
 }
 

@@ -17,6 +17,16 @@
         }
       }
     },
+    "By making a purchase, you agree to the terms of the" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Совершая покупку, вы соглашаетесь с условиями"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -104,6 +114,16 @@
     },
     "Hello, StatsView!" : {
 
+    },
+    "Pay" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оплатить"
+          }
+        }
+      }
     },
     "Price" : {
       "localizations" : {
@@ -215,6 +235,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "К оплате"
+          }
+        }
+      }
+    },
+    "User agreement" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пользовательского соглашения"
+          }
+        }
+      }
+    },
+    "User agreement:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пользовательское соглашение"
           }
         }
       }
