@@ -16,14 +16,12 @@ final class PaymentViewModel {
         selectedCurrencyId = currency.id
     }
     
-    func payOrder() -> Bool { //Заглушка пока не подключены запросы
+    func payOrder() async -> Bool { //Заглушка пока не подключены запросы
         guard !selectedCurrencyId.isEmpty else {
             return false
         }
-        if selectedCurrencyId == "3" || selectedCurrencyId == "4" {
-            return false
-        }
-        return true
+        try? await Task.sleep(for: .seconds(1))
+        return Bool.random() 
     }
 }
 

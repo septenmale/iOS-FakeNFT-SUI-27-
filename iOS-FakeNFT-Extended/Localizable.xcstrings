@@ -28,7 +28,6 @@
       }
     },
     "Cancel" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -98,17 +97,6 @@
         }
       }
     },
-    "Failed to make payment" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Не удалось произвести оплату"
-          }
-        }
-      }
-    },
     "Hello, ProfileView!" : {
 
     },
@@ -121,6 +109,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Оплатить"
+          }
+        }
+      }
+    },
+    "Payment failed" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось произвести оплату"
           }
         }
       }
@@ -156,7 +154,6 @@
       }
     },
     "Repeat" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

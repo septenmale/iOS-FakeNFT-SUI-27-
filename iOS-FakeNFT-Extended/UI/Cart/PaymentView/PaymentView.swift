@@ -24,6 +24,16 @@ struct PaymentView: View {
                 CartBackButton(color: .yaBlack)
             }
         }
+        .alert(
+            String(localized: "Payment failed"),
+            isPresented: $showPaymentErrorAlert
+        ) {
+            Button(String(localized: "Cancel"), role: .cancel) {}
+            Button(String(localized: "Repeat")) {
+                pay()
+            }
+        }
+        
     }
     
     private var currencyList: some View {
@@ -105,7 +115,14 @@ struct PaymentView: View {
     }
     
     func pay() {
-        showSuccessView = viewModel.payOrder()
+        Task {
+            let successPayment = await viewModel.payOrder()
+            if successPayment {
+                showSuccessView = true
+            } else {
+                showPaymentErrorAlert = true
+            }
+        }
     }
 }
 
