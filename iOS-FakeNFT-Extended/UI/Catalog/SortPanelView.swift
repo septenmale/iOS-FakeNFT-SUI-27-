@@ -8,13 +8,11 @@ struct SortPanelView: View {
         VStack(spacing: 0) {
             Text("Сортировка")
                 .font(.regular13)
-            // TODO: добавить серый
-                .foregroundColor(.gray)
+                .foregroundColor(.labelColorGrey)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.vertical, 12)
             
             Rectangle()
-            // TODO: добавить серый
                 .fill(Color.primary.opacity(0.3))
                 .frame(height: 0.5)
             
@@ -22,7 +20,6 @@ struct SortPanelView: View {
                 sortOptionRow(title: "По названию", option: .byName)
                 
                 Rectangle()
-                // TODO: добавить серый
                     .fill(Color.primary.opacity(0.3))
                     .frame(height: 0.5)
                 
@@ -42,6 +39,7 @@ struct SortPanelView: View {
     private func sortOptionRow(title: String, option: SortOption) -> some View {
         Button(action: {
             selectedSortOption = option
+            SortSettings.selectedSortOption = option // ← ДОБАВЬ ЭТУ СТРОКУ
             withAnimation(.easeInOut(duration: 0.3)) {
                 isShowingSortOptions = false
             }

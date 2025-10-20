@@ -12,6 +12,7 @@
       }
     },
     "Catalog.openNft" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -64,13 +65,13 @@
     "Hello, CartView!" : {
 
     },
+    "Hello, CollectionView!" : {
+
+    },
     "Hello, ProfileView!" : {
 
     },
     "Hello, StatsView!" : {
-
-    },
-    "Sorting" : {
 
     },
     "Tab.cart" : {

@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct CatalogView: View {
-    @State private var selectedSortOption: SortOption = .byName
+    @State private var selectedSortOption: SortOption = SortSettings.selectedSortOption
     @State private var isShowingSortOptions = false
+    @State private var sortedCatalog: [CatalogNft] = []
     
     var body: some View {
         NavigationView {
@@ -12,7 +13,7 @@ struct CatalogView: View {
                         Color.clear
                             .frame(height: 35)
                         
-                        ForEach(CatalogSample.catalog, id: \.id) { item in
+                        ForEach(sortedCatalog, id: \.title) { item in
                             NavigationLink(destination: CollectionView(collection: item)) {
                                 CatalogCell(item: item)
                                     .padding(.horizontal, 16)
@@ -53,10 +54,30 @@ struct CatalogView: View {
                 alignment: .topTrailing
             )
             .animation(.easeInOut(duration: 0.3), value: isShowingSortOptions)
+            .onAppear {
+                applySorting()
+            }
+            .onChange(of: selectedSortOption) { _ in
+                applySorting()
+            }
         }
     }
     
-    private func section(title: String, items: [String]) -> some View {
+    var sortButton: some View {
+        Button(action: {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                isShowingSortOptions.toggle()
+            }
+        }) {
+            Image("sort")
+                .foregroundColor(.yaBlack)
+                .frame(width: 42, height: 42)
+        }
+    }
+}
+
+private extension CatalogView {
+    func section(title: String, items: [String]) -> some View {
         VStack(spacing: 0) {
             HStack {
                 Text(title)
@@ -94,15 +115,12 @@ struct CatalogView: View {
         }
     }
     
-    var sortButton: some View {
-        Button(action: {
-            withAnimation(.easeInOut(duration: 0.3)) {
-                isShowingSortOptions.toggle()
-            }
-        }) {
-            Image("sort")
-                .foregroundColor(.yaBlack)
-                .frame(width: 42, height: 42)
+    func applySorting() {
+        switch selectedSortOption {
+        case .byName:
+            sortedCatalog = CatalogSample.catalog.sorted { $0.title < $1.title }
+        case .byNFTCount:
+            sortedCatalog = CatalogSample.catalog.sorted { $0.currentCount > $1.currentCount }
         }
     }
 }
