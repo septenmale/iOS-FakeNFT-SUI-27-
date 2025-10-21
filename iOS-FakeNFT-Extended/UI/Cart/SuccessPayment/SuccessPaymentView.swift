@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SuccessPaymentView: View {
-    @Environment(\.dismiss) private var dismiss
     let onReturn: () -> Void
 
     var body: some View {
@@ -37,7 +36,7 @@ struct SuccessPaymentView: View {
     
     private var button: some View {
         Button(String(localized: "Return to cart")) {
-            dismiss()
+            onReturn()
         }
         .font(.bold17)
         .foregroundColor(.yaWhite)

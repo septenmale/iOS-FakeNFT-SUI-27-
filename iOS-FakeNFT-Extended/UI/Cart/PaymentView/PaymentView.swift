@@ -3,7 +3,7 @@ import SwiftUI
 struct PaymentView: View {
     @State var viewModel: PaymentViewModel
     @State private var showPaymentErrorAlert = false
-    @State private var showSuccessView = false
+    var onSuccess: () -> Void
     
     let columns: [GridItem] = [
         GridItem(.flexible()),
@@ -33,7 +33,6 @@ struct PaymentView: View {
                 pay()
             }
         }
-        
     }
     
     private var currencyList: some View {
@@ -107,18 +106,13 @@ struct PaymentView: View {
                 .opacity(isDisabled ? 0.6 : 1)
         }
         .disabled(isDisabled)
-        .fullScreenCover(isPresented: $showSuccessView) {
-            SuccessPaymentView {
-                showSuccessView = false
-            }
-        }
     }
     
     func pay() {
         Task {
             let successPayment = await viewModel.payOrder()
             if successPayment {
-                showSuccessView = true
+                onSuccess()
             } else {
                 showPaymentErrorAlert = true
             }
@@ -142,6 +136,7 @@ struct PaymentView: View {
     let viewModel = PaymentViewModel(cartItems: mockItems)
     
     NavigationStack {
-        PaymentView(viewModel: viewModel)
+        PaymentView(viewModel: viewModel, onSuccess: {})
     }
 }
+

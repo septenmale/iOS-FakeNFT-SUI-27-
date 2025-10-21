@@ -58,6 +58,7 @@
 		F82D52C02EA631AC00FEF184 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52BF2EA631A500FEF184 /* WebView.swift */; };
 		F82D52C22EA6376800FEF184 /* CartBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C12EA6375300FEF184 /* CartBackButton.swift */; };
 		F82D52C52EA6439E00FEF184 /* SuccessPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C42EA6438C00FEF184 /* SuccessPaymentView.swift */; };
+		F82D52C72EA7779D00FEF184 /* CartNavigationDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C62EA7779C00FEF184 /* CartNavigationDestination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		F82D52BF2EA631A500FEF184 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		F82D52C12EA6375300FEF184 /* CartBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBackButton.swift; sourceTree = "<group>"; };
 		F82D52C42EA6438C00FEF184 /* SuccessPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPaymentView.swift; sourceTree = "<group>"; };
+		F82D52C62EA7779C00FEF184 /* CartNavigationDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartNavigationDestination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -384,6 +386,7 @@
 		F82D526D2EA24E8E00FEF184 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F82D52C62EA7779C00FEF184 /* CartNavigationDestination.swift */,
 				F821EC962E9E71F70003AB8A /* CornerRadiusShape.swift */,
 				F82D51AC2EA0186000FEF184 /* CartSizeConstants.swift */,
 			);
@@ -604,6 +607,7 @@
 				ABC5E1DD2C3204DC002B4068 /* CellsReusingUtils.swift in Sources */,
 				ABC5E1B52C31FC57002B4068 /* TabBarView.swift in Sources */,
 				ABC5E1E42C32055B002B4068 /* ErrorView.swift in Sources */,
+				F82D52C72EA7779D00FEF184 /* CartNavigationDestination.swift in Sources */,
 				F821EC3F2E9D08420003AB8A /* CartCell.swift in Sources */,
 				ABC5E1A62C31F815002B4068 /* NetworkRequest.swift in Sources */,
 				F821EC3D2E9D06DD0003AB8A /* CartItem.swift in Sources */,
