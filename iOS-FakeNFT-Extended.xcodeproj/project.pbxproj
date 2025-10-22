@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		2AC0A2792E9AB3C9007B226B /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC0A2782E9AB3C3007B226B /* CartView.swift */; };
 		2AC0A2832E9AB4E1007B226B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2AC0A2822E9AB4E1007B226B /* Localizable.xcstrings */; };
-		2AE7EB0D2EA046AF009D83EB /* StatsUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7EB0C2EA046A8009D83EB /* StatsUserProfile.swift */; };
+		2AE7EB0D2EA046AF009D83EB /* StatsUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7EB0C2EA046A8009D83EB /* StatsUserProfileView.swift */; };
 		2AE7EBB52EA521E7009D83EB /* Image+DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7EBB42EA521E2009D83EB /* Image+DataExtension.swift */; };
+		2AE7EBCE2EA947AF009D83EB /* StatsUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7EBCD2EA947A8009D83EB /* StatsUserProfileViewModel.swift */; };
 		ABC5E16C2C31F5AF002B4068 /* iOS_FakeNFT_ExtendedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC5E16B2C31F5AF002B4068 /* iOS_FakeNFT_ExtendedApp.swift */; };
 		ABC5E16E2C31F5AF002B4068 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC5E16D2C31F5AF002B4068 /* ContentView.swift */; };
 		ABC5E1702C31F5AF002B4068 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC5E16F2C31F5AF002B4068 /* Assets.xcassets */; };
@@ -65,8 +66,9 @@
 /* Begin PBXFileReference section */
 		2AC0A2782E9AB3C3007B226B /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		2AC0A2822E9AB4E1007B226B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		2AE7EB0C2EA046A8009D83EB /* StatsUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsUserProfile.swift; sourceTree = "<group>"; };
+		2AE7EB0C2EA046A8009D83EB /* StatsUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsUserProfileView.swift; sourceTree = "<group>"; };
 		2AE7EBB42EA521E2009D83EB /* Image+DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+DataExtension.swift"; sourceTree = "<group>"; };
+		2AE7EBCD2EA947A8009D83EB /* StatsUserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsUserProfileViewModel.swift; sourceTree = "<group>"; };
 		ABC5E1682C31F5AF002B4068 /* iOS-FakeNFT-Extended.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-FakeNFT-Extended.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC5E16B2C31F5AF002B4068 /* iOS_FakeNFT_ExtendedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_FakeNFT_ExtendedApp.swift; sourceTree = "<group>"; };
 		ABC5E16D2C31F5AF002B4068 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,7 +148,8 @@
 		2AE7EB0B2EA0469E009D83EB /* StatsUserProfile */ = {
 			isa = PBXGroup;
 			children = (
-				2AE7EB0C2EA046A8009D83EB /* StatsUserProfile.swift */,
+				2AE7EBCD2EA947A8009D83EB /* StatsUserProfileViewModel.swift */,
+				2AE7EB0C2EA046A8009D83EB /* StatsUserProfileView.swift */,
 			);
 			path = StatsUserProfile;
 			sourceTree = "<group>";
@@ -497,10 +500,11 @@
 				ABC5E1E42C32055B002B4068 /* ErrorView.swift in Sources */,
 				ABC5E1A62C31F815002B4068 /* NetworkRequest.swift in Sources */,
 				2AC0A2792E9AB3C9007B226B /* CartView.swift in Sources */,
-				2AE7EB0D2EA046AF009D83EB /* StatsUserProfile.swift in Sources */,
+				2AE7EB0D2EA046AF009D83EB /* StatsUserProfileView.swift in Sources */,
 				ABC5E1D52C320446002B4068 /* NftDetailInput.swift in Sources */,
 				ABC5E16E2C31F5AF002B4068 /* ContentView.swift in Sources */,
 				2AE7EBB52EA521E7009D83EB /* Image+DataExtension.swift in Sources */,
+				2AE7EBCE2EA947AF009D83EB /* StatsUserProfileViewModel.swift in Sources */,
 				ABC5E1DF2C3204FB002B4068 /* LoadingView.swift in Sources */,
 				ABC5E1A42C31F800002B4068 /* NetworkClient.swift in Sources */,
 				ABC5E1D32C320438002B4068 /* NftDetailAssembly.swift in Sources */,
