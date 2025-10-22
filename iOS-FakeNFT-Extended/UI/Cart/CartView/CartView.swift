@@ -6,40 +6,58 @@ struct CartView: View {
     @State private var showDeleteConfirmation = false
     @State private var itemToDelete: CartItem?
     
+    @State private var path: [CartNavigationDestination] = []
+    
     @State var hideTabBar = false
     
     var body: some View {
-        ZStack {
-            if viewModel.items.isEmpty {
-                EmptyCartView()
-            } else {
-                VStack(spacing: 0) {
-                    nftList
-                    totalSection
+        NavigationStack(path: $path) {
+            ZStack {
+                if viewModel.items.isEmpty {
+                    EmptyCartView()
+                } else {
+                    VStack(spacing: 0) {
+                        nftList
+                        totalSection
+                    }
+                }
+                if showDeleteConfirmation, let item = itemToDelete {
+                    DeleteConfirmationView(
+                        item: item,
+                        onConfirm: {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                showDeleteConfirmation = false
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                viewModel.removeItem(item)
+                            }
+                            itemToDelete = nil
+                        },
+                        onCancel: {
+                            showDeleteConfirmation = false
+                            itemToDelete = nil
+                        }
+                    )
                 }
             }
-            
-            if showDeleteConfirmation, let item = itemToDelete {
-                DeleteConfirmationView(
-                    item: item,
-                    onConfirm: {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            showDeleteConfirmation = false
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                            viewModel.removeItem(item)
-                        }
-                        itemToDelete = nil
-                    },
-                    onCancel: {
-                        showDeleteConfirmation = false
-                        itemToDelete = nil
+            .navigationDestination(for: CartNavigationDestination.self) { destination in
+                switch destination {
+                case .payment(let cartItems):
+                    PaymentView(
+                        viewModel: PaymentViewModel(cartItems: cartItems),
+                        onSuccess: {
+                            path.append(.success)
+                        })
+                case .success:
+                    SuccessPaymentView {
+                        viewModel.clearCart()
+                        path.removeLast(path.count)
                     }
-                )
+                }
             }
+            .toolbar(showDeleteConfirmation ? .hidden : .visible, for: .tabBar)
+            .animation(.easeInOut(duration: 0.2), value: viewModel.items.count)
         }
-        .toolbar(showDeleteConfirmation ? .hidden : .visible, for: .tabBar)
-        .animation(.easeInOut(duration: 0.2), value: viewModel.items.count)
     }
     
     private var nftList: some View {
@@ -69,7 +87,9 @@ struct CartView: View {
                     .foregroundColor(.green)
             }
             Spacer()
-            Button {}
+            Button {
+                path.append(.payment(cartItems: viewModel.items))
+            }
             label: {
                 Text(String(localized: "To payment"))
                     .font(.bold17)
@@ -89,3 +109,5 @@ struct CartView: View {
 #Preview {
     CartView()
 }
+
+

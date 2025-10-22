@@ -1,6 +1,6 @@
 import Foundation
 
-struct CartItem: Identifiable {
+struct CartItem: Identifiable, Hashable {
     let id = UUID()
     let imageURL: String
     let name: String

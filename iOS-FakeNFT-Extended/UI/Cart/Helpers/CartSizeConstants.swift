@@ -12,10 +12,15 @@ enum CartSizeConstants {
     static let totalSectionHeight: CGFloat = 76
     static let totalSectionRadius: CGFloat = 20
     
-    // MARK: - Элементы Списка (CartCell)
+    // MARK: - Элементы Списка
     
+    // Секция "CartCell"
     static let cellImageSize: CGFloat = 108
     static let cellImageCornerRadius: CGFloat = 12
+    
+    // Секция "CarrencyCell"
+    static let carrencyImageSize: CGFloat = 36
+    static let carrencyImageCornerRadius: CGFloat = 6
     
     // MARK: - Модальное окно (DeleteConfirmationView)
     
@@ -25,4 +30,17 @@ enum CartSizeConstants {
     // Общие константы для модальных кнопок
     static let modalButtonHeight: CGFloat = 44
     static let modalButtonRadius: CGFloat = 12
+    
+    // MARK: - Кнопки и Секции (PaymentView)
+    
+    static let payButtonHeight: CGFloat = 60
+    static let payButtonRadius: CGFloat = 16
+    static let payBlockRadius: CGFloat = 12
+    
+    // MARK: - Кнопки и Секции (SuccessPaymentView)
+    
+    static let successImageSize: CGFloat = 278
+    static let successButtonHeight: CGFloat = 60
+    static let successButtonRadius: CGFloat = 16
 }
+

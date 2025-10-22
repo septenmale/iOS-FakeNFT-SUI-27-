@@ -14,6 +14,10 @@ final class CartViewModel {
             items.remove(at: index)
         }
     }
+    
+    func clearCart() {
+        items.removeAll()
+    }
 }
 
 struct MockItems {
