@@ -63,6 +63,9 @@
     "Hello, ProfileView!" : {
 
     },
+    "NFTCollection" : {
+
+    },
     "Tab.cart" : {
       "extractionState" : "manual",
       "localizations" : {

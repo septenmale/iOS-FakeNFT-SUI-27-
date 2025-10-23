@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WebKit
 
 struct StatsUserProfileView: View {
     
@@ -24,25 +23,35 @@ struct StatsUserProfileView: View {
     private let userNFTCollectionButtonTextFont: Font = .system(size: 17, weight: .bold)
     
     var body: some View {
-        mainView
-            .navigationBarBackButtonHidden()
-        
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "chevron.backward")
+            mainView
+                .onAppear {
+                    withAnimation {
+                        viewModel.isTabBarVisible = .visible
                     }
-                    .foregroundStyle(.yaBlack)
                 }
-            }
-            .navigationDestination(isPresented: $viewModel.showUserNFTCollection) {
-                Text("NFTCollection")
-            }
-            .navigationDestination(isPresented: $viewModel.showWebView) {
-                Text("WebView")
-            }
+        
+                .navigationBarBackButtonHidden()
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "chevron.backward")
+                        }
+                        .foregroundStyle(.yaBlack)
+                    }
+                }
+                .toolbar(viewModel.isTabBarVisible, for: .tabBar)
+        
+                .navigationDestination(isPresented: $viewModel.showUserNFTCollection) {
+                    Text("NFTCollection")
+                }
+                .navigationDestination(isPresented: $viewModel.showWebView) {
+                    UserProfileWebView(url: viewModel.user.website)
+                        .onAppear {
+                                viewModel.isTabBarVisible = .hidden
+                        }
+                }
     }
     
     private var mainView: some View {

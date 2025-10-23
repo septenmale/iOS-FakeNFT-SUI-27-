@@ -12,7 +12,7 @@ struct User: Identifiable {
     let name: String
     let imageData: Data?
     let description: String
-    let website: String?
+    let website: String
     let NFTCollectionIDs: [String]
     let NFTCount: Int
     
@@ -20,7 +20,7 @@ struct User: Identifiable {
         self.name = name ?? "Unknown User"
         self.imageData = imageData
         self.description = description ?? "No Description"
-        self.website = website
+        self.website = website ?? "https://practicum.yandex.ru/"
         self.NFTCollectionIDs = NFTCollectionIDs ?? []
         self.NFTCount = NFTCount ?? 0
     }
