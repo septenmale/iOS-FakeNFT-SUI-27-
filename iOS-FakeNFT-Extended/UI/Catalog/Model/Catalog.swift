@@ -8,7 +8,7 @@ final class CatalogNft {
     var collection: [Collection] = []
     var catalogImage: String
     var currentCount: Int { collection.count }
-        
+    
     init(
         title: String,
         catalogImage: String

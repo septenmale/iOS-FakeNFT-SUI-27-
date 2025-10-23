@@ -24,9 +24,9 @@ struct CloseButtonView: View {
 }
 
 #Preview {
-    @State var isShowing = true
+    @Previewable @State var isShowing = true
     
-    return ZStack {
+    ZStack {
         Color.black.opacity(0.3).ignoresSafeArea()
         
         VStack {

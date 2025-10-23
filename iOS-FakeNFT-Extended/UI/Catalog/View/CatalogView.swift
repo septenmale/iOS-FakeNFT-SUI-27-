@@ -57,7 +57,7 @@ struct CatalogView: View {
             .onAppear {
                 applySorting()
             }
-            .onChange(of: selectedSortOption) { _ in
+            onChange(of: selectedSortOption) { _, _ in
                 applySorting()
             }
         }

@@ -58,10 +58,10 @@ struct SortPanelView: View {
 }
 
 #Preview {
-    @State var selectedOption: SortOption = .byName
-    @State var isShowing = true
+    @Previewable @State var selectedOption: SortOption = .byName
+    @Previewable @State var isShowing = true
     
-    return ZStack {
+    ZStack {
         LinearGradient(
             colors: [.red, .blue, .green],
             startPoint: .topLeading,
