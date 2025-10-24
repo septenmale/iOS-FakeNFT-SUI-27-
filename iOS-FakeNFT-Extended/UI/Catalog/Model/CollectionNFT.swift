@@ -2,10 +2,10 @@ import SwiftUI
 import SwiftData
 
 @Model
-final class Collection {
+final class CollectionNFT {
     var name: String
     var like: Bool
-    var rating: Double
+    var rating: Int
     var price: Int
     var imageNft: String
     var basket: Bool
@@ -13,7 +13,7 @@ final class Collection {
     init(
         name: String,
         like: Bool = false,
-        rating: Double,
+        rating: Int,
         price: Int,
         imageNft: String,
         basket: Bool = false

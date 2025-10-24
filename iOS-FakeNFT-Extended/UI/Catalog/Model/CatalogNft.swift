@@ -5,7 +5,7 @@ import SwiftData
 final class CatalogNft {
     @Attribute(.unique) var title: String
     
-    var collection: [Collection] = []
+    var collection: [CollectionNFT] = []
     var catalogImage: String
     var currentCount: Int { collection.count }
     
