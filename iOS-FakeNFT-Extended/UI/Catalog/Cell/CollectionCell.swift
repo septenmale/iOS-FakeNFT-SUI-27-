@@ -9,9 +9,17 @@ struct CollectionCell: View {
                 Rectangle()
                     .fill(Color.yaLightGrey)
                 
-                Image(item.imageNft)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+                if let imageData = item.imageNft,
+                   let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                } else {
+                    Image("")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .foregroundColor(.gray)
+                }
                 
                 Button(action: {
                 }) {
@@ -43,7 +51,7 @@ struct CollectionCell: View {
                         .font(.bold17)
                         .foregroundColor(.yaBlack)
                     
-                    Text("\(item.price) ETH")
+                    Text("\(formattedPrice) ETH")
                         .font(.medium10)
                         .foregroundColor(.yaBlack)
                 }
@@ -61,6 +69,15 @@ struct CollectionCell: View {
             }
         }
         .frame(width: 108)
+    }
+    
+    private var formattedPrice: String {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
+        formatter.numberStyle = .decimal
+        
+        return formatter.string(from: NSNumber(value: item.price)) ?? "\(item.price)"
     }
 }
 

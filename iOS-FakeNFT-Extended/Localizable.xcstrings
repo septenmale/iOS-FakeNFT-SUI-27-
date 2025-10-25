@@ -11,6 +11,9 @@
         }
       }
     },
+    "%lf ETH" : {
+
+    },
     "Catalog.openNft" : {
       "extractionState" : "stale",
       "localizations" : {

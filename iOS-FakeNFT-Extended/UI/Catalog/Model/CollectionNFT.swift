@@ -3,26 +3,33 @@ import SwiftData
 
 @Model
 final class CollectionNFT {
+    var id: String
     var name: String
     var like: Bool
     var rating: Int
-    var price: Int
-    var imageNft: String
+    var price: Double
+    var imageNft: Data?
     var basket: Bool
     
     init(
-        name: String,
+        id: String,
+        name: String? = nil,
         like: Bool = false,
-        rating: Int,
-        price: Int,
-        imageNft: String,
+        rating: Int? = nil,
+        price: Double? = nil,
+        imageNft: Data? = nil,
         basket: Bool = false
     ) {
-        self.name = name
+        self.id = id
+        self.name = name ?? "Unknown"
         self.like = like
-        self.rating = rating
-        self.price = price
+        self.rating = rating ?? 0
+        self.price = price ?? 0.00
         self.imageNft = imageNft
         self.basket = basket
+    }
+    
+    func getID() -> String {
+        return id
     }
 }
