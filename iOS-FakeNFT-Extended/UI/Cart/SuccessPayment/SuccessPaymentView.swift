@@ -16,7 +16,7 @@ struct SuccessPaymentView: View {
     }
 
     private var image: some View {
-        Image("SuccessPaymentImage")
+        Image("successPaymentImage")
             .resizable()
             .scaledToFit()
             .frame(

@@ -24,9 +24,9 @@ struct CurrencyCell: View {
         Image(currency.title)
             .resizable()
             .scaledToFill()
-            .frame(width: CartSizeConstants.carrencyImageSize, height: CartSizeConstants.carrencyImageSize)
+            .frame(width: CartSizeConstants.currencyImageSize, height: CartSizeConstants.currencyImageSize)
             .clipped()
-            .cornerRadius(CartSizeConstants.carrencyImageCornerRadius)
+            .cornerRadius(CartSizeConstants.currencyImageCornerRadius)
     }
     
     private var text: some View {
