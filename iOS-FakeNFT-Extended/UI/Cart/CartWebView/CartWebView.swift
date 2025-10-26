@@ -1,7 +1,7 @@
 import SwiftUI
 import WebKit
 
-struct WebView: UIViewRepresentable {
+struct CartWebView: UIViewRepresentable {
     let url: URL?
 
     func makeUIView(context: Context) -> WKWebView {
@@ -19,6 +19,6 @@ struct WebView: UIViewRepresentable {
 
 //MARK: - Preview
 #Preview {
-    WebView(url: URL(string: CartRequestsConstants.webViewURL))
+    CartWebView(url: URL(string: CartRequestsConstants.webViewURL))
         .edgesIgnoringSafeArea(.all)
 }

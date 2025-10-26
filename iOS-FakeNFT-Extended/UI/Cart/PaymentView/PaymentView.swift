@@ -72,7 +72,7 @@ struct PaymentView: View {
                 .foregroundColor(.yaBlack)
             
             NavigationLink {
-                WebView(url: URL(string: CartRequestsConstants.webViewURL))
+                CartWebView(url: URL(string: CartRequestsConstants.webViewURL))
                     .navigationTitle(String(localized: "User agreement:"))
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden(true)

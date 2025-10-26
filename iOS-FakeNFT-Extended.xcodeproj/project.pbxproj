@@ -55,7 +55,7 @@
 		F82D526C2EA24E8200FEF184 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D526B2EA24E7E00FEF184 /* PaymentViewModel.swift */; };
 		F82D52722EA252C100FEF184 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52712EA252B900FEF184 /* CurrencyCell.swift */; };
 		F82D52752EA62F9C00FEF184 /* CartRequestsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52742EA62F8300FEF184 /* CartRequestsConstants.swift */; };
-		F82D52C02EA631AC00FEF184 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52BF2EA631A500FEF184 /* WebView.swift */; };
+		F82D52C02EA631AC00FEF184 /* CartWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52BF2EA631A500FEF184 /* CartWebView.swift */; };
 		F82D52C22EA6376800FEF184 /* CartBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C12EA6375300FEF184 /* CartBackButton.swift */; };
 		F82D52C52EA6439E00FEF184 /* SuccessPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C42EA6438C00FEF184 /* SuccessPaymentView.swift */; };
 		F82D52C72EA7779D00FEF184 /* CartNavigationDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C62EA7779C00FEF184 /* CartNavigationDestination.swift */; };
@@ -128,7 +128,7 @@
 		F82D526B2EA24E7E00FEF184 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		F82D52712EA252B900FEF184 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		F82D52742EA62F8300FEF184 /* CartRequestsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRequestsConstants.swift; sourceTree = "<group>"; };
-		F82D52BF2EA631A500FEF184 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		F82D52BF2EA631A500FEF184 /* CartWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartWebView.swift; sourceTree = "<group>"; };
 		F82D52C12EA6375300FEF184 /* CartBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBackButton.swift; sourceTree = "<group>"; };
 		F82D52C42EA6438C00FEF184 /* SuccessPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPaymentView.swift; sourceTree = "<group>"; };
 		F82D52C62EA7779C00FEF184 /* CartNavigationDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartNavigationDestination.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 			children = (
 				F82D52C32EA6437A00FEF184 /* SuccessPayment */,
 				F82D52C12EA6375300FEF184 /* CartBackButton.swift */,
-				F82D52BE2EA6319D00FEF184 /* WebView */,
+				F82D52BE2EA6319D00FEF184 /* CartWebView */,
 				F82D526F2EA24ED400FEF184 /* PaymentView */,
 				F82D526E2EA24EC000FEF184 /* CartView */,
 				F82D526D2EA24E8E00FEF184 /* Helpers */,
@@ -429,12 +429,12 @@
 			path = Cart;
 			sourceTree = "<group>";
 		};
-		F82D52BE2EA6319D00FEF184 /* WebView */ = {
+		F82D52BE2EA6319D00FEF184 /* CartWebView */ = {
 			isa = PBXGroup;
 			children = (
-				F82D52BF2EA631A500FEF184 /* WebView.swift */,
+				F82D52BF2EA631A500FEF184 /* CartWebView.swift */,
 			);
-			path = WebView;
+			path = CartWebView;
 			sourceTree = "<group>";
 		};
 		F82D52C32EA6437A00FEF184 /* SuccessPayment */ = {
@@ -595,7 +595,7 @@
 				ABC5E1B72C31FC70002B4068 /* ServicesAssembly.swift in Sources */,
 				F821EC952E9E71CE0003AB8A /* View+Extensions.swift in Sources */,
 				F821ECC72E9FC4B60003AB8A /* EmptyCartView.swift in Sources */,
-				F82D52C02EA631AC00FEF184 /* WebView.swift in Sources */,
+				F82D52C02EA631AC00FEF184 /* CartWebView.swift in Sources */,
 				F821EC3A2E9D05900003AB8A /* CartViewModel.swift in Sources */,
 				F82D52C52EA6439E00FEF184 /* SuccessPaymentView.swift in Sources */,
 				ABC5E19D2C31F6A6002B4068 /* NftStorage.swift in Sources */,
