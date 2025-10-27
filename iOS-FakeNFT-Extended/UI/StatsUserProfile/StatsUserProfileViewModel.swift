@@ -12,8 +12,7 @@ import SwiftUI
     
     var showWebView: Bool = false
     var showUserNFTCollection: Bool = false
-    var isTabBarVisible: Visibility = .visible
-    
+
     init(user: User) {
         self.user = user
     }
@@ -24,5 +23,4 @@ protocol StatsUserProfileViewModelProtocol {
     
     var showWebView: Bool { get set }
     var showUserNFTCollection: Bool { get set }
-    var isTabBarVisible: Visibility { get set }
 }

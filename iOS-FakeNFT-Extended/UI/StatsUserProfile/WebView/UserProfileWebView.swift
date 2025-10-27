@@ -15,7 +15,7 @@ struct UserProfileWebView: View {
     
     var body: some View {
         WebView.init(url: URL(string: url))
-            .ignoresSafeArea()
+            .edgesIgnoringSafeArea(.bottom)
             .navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -27,5 +27,6 @@ struct UserProfileWebView: View {
                     .foregroundStyle(.yaBlack)
                 }
             }
+            .background(Color.yaWhite)
     }
 }

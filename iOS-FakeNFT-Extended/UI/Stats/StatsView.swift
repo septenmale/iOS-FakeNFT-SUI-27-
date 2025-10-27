@@ -24,6 +24,12 @@ struct StatsView: View {
             .padding(.top, 20)
             .background(Color.yaWhite)
             
+            .onAppear {
+                withAnimation {
+                    viewModel.isTabBarVisible = .visible
+                }
+            }
+            
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -34,6 +40,7 @@ struct StatsView: View {
                     }
                 }
             }
+            .toolbar(viewModel.isTabBarVisible, for: .tabBar)
             
             .actionSheet(isPresented: $viewModel.showActionSheet) {
                 ActionSheet(title: Text("Сортировка"), buttons: [
@@ -52,6 +59,9 @@ struct StatsView: View {
             .navigationDestination(isPresented: $viewModel.showUserProfileView) {
                 let selectedUser = viewModel.selectedUser ?? User()
                 StatsUserProfileView(user: selectedUser)
+                    .onAppear {
+                        viewModel.isTabBarVisible = .hidden
+                    }
             }
         }
     }

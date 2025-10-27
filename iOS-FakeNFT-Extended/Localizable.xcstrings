@@ -4,6 +4,9 @@
     "%@" : {
 
     },
+    "%@ ETH" : {
+
+    },
     "%lld" : {
 
     },
@@ -63,9 +66,6 @@
     "Hello, ProfileView!" : {
 
     },
-    "NFTCollection" : {
-
-    },
     "Tab.cart" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -110,6 +110,9 @@
       }
     },
     "Закрыть" : {
+
+    },
+    "Коллекция NFT" : {
 
     },
     "Коллекция NFT (%lld)" : {

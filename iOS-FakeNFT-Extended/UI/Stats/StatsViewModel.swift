@@ -34,8 +34,8 @@ enum StatsFilterStrategy: String {
 @Observable final class StatsViewModel: StatsViewModelProtocol {
     
     var showUserProfileView = false
-
     var showActionSheet = false
+    var isTabBarVisible: Visibility = .visible
     
     var filteredUsers: [User] {
         get {
@@ -86,8 +86,8 @@ enum StatsFilterStrategy: String {
 @Observable final class StatsViewModelMock: StatsViewModelProtocol {
 
     var showActionSheet = false
-    
     var showUserProfileView = false
+    var isTabBarVisible: Visibility = .visible
     
     var filteredUsers: [User] {
         get {
@@ -112,9 +112,10 @@ enum StatsFilterStrategy: String {
                 """
                 Hi, I'm Helen! And I really like NFTs. I love exploring the world of digital art, discovering unique creators, and collecting pieces that tell a story. For me, NFTs are more than just collectibles — they're a way to support artists and be part of a new creative revolution. I’m always looking for new projects, communities, and ideas that push the boundaries of digital ownership and creativity.
                 """,
-             NFTCount: 21),
+             NFTCollectionIDs: ["randomID", "anotherRandomID", "lastRandomID"], NFTCount: 21),
         User(name: "Martin",
              imageData: nil,
+             NFTCollectionIDs: ["randomID", "anotherRandomID", "lastRandomID"],
              NFTCount: 16),
         User(name: "Olga",
              imageData: nil,
@@ -161,6 +162,8 @@ enum StatsFilterStrategy: String {
 protocol StatsViewModelProtocol {
     var showActionSheet: Bool { get set }
     var showUserProfileView: Bool { get set }
+    var isTabBarVisible: Visibility { get set }
+    
     var selectedUser: User? { get }
     
     var filteredUsers: [User] { get }

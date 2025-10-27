@@ -1,5 +1,5 @@
 //
-//  StatsUserProfile.swift
+//  StatsUserProfileView.swift
 //  iOS-FakeNFT-Extended
 //
 //  Created by Owi Lover on 10/16/25.
@@ -24,12 +24,6 @@ struct StatsUserProfileView: View {
     
     var body: some View {
             mainView
-                .onAppear {
-                    withAnimation {
-                        viewModel.isTabBarVisible = .visible
-                    }
-                }
-        
                 .navigationBarBackButtonHidden()
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
@@ -41,16 +35,12 @@ struct StatsUserProfileView: View {
                         .foregroundStyle(.yaBlack)
                     }
                 }
-                .toolbar(viewModel.isTabBarVisible, for: .tabBar)
-        
+    
                 .navigationDestination(isPresented: $viewModel.showUserNFTCollection) {
-                    Text("NFTCollection")
+                    UserNFTCollectionView(userCollection: viewModel.user.NFTCollectionIDs)
                 }
                 .navigationDestination(isPresented: $viewModel.showWebView) {
                     UserProfileWebView(url: viewModel.user.website)
-                        .onAppear {
-                                viewModel.isTabBarVisible = .hidden
-                        }
                 }
     }
     
@@ -129,7 +119,7 @@ struct StatsUserProfileView: View {
             isPresented = true
         }
         .navigationDestination(isPresented: $isPresented) {
-            StatsUserProfileView(user: User(name: "Alex", imageData: nil, NFTCount: 39))
+            StatsUserProfileView(user: User(name: "Alex", imageData: nil, NFTCollectionIDs: ["randomID", "anotherRandomID", "lastRandomID"], NFTCount: 39))
         }
     }
 }
