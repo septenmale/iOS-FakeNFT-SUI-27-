@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import ProgressHUD
 
 struct UserNFTCollectionView: View {
     @Environment(\.dismiss) private var dismiss
