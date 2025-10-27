@@ -2,6 +2,10 @@ import SwiftUI
 
 struct CollectionCell: View {
     let item: CollectionNFT
+    let isLiked: Bool
+    let isInCart: Bool
+    let onLikeTap: () -> Void
+    let onCartTap: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -21,13 +25,12 @@ struct CollectionCell: View {
                         .foregroundColor(.gray)
                 }
                 
-                Button(action: {
-                }) {
+                Button(action: onLikeTap) {
                     Image("like")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 40, height: 40)
-                        .foregroundColor(item.like ? .uniRed : .uniWhite)
+                        .foregroundColor(isLiked ? .uniRed : .uniWhite)
                         .padding(-6)
                 }
                 .padding(4)
@@ -58,9 +61,8 @@ struct CollectionCell: View {
                 
                 Spacer()
                 
-                Button(action: {
-                }) {
-                    Image(item.basket ? "cartOn" : "cartOff")
+                Button(action: onCartTap) {
+                    Image(isInCart ? "cartOn" : "cartOff")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20)
@@ -82,5 +84,15 @@ struct CollectionCell: View {
 }
 
 #Preview {
-    CollectionCell(item: CollectionSample.collection[0])
+    CollectionCell(
+        item: CollectionSample.collection[0],
+        isLiked: true,
+        isInCart: false,
+        onLikeTap: {
+            print("Like tapped")
+        },
+        onCartTap: {
+            print("Cart tapped")
+        }
+    )
 }

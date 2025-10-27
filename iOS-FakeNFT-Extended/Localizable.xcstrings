@@ -68,9 +68,6 @@
     "Hello, CartView!" : {
 
     },
-    "Hello, CollectionView!" : {
-
-    },
     "Hello, ProfileView!" : {
 
     },
@@ -119,6 +116,9 @@
           }
         }
       }
+    },
+    "Автор коллекции:" : {
+
     },
     "Закрыть" : {
 
