@@ -59,6 +59,9 @@
 		F82D52C22EA6376800FEF184 /* CartBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C12EA6375300FEF184 /* CartBackButton.swift */; };
 		F82D52C52EA6439E00FEF184 /* SuccessPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C42EA6438C00FEF184 /* SuccessPaymentView.swift */; };
 		F82D52C72EA7779D00FEF184 /* CartNavigationDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D52C62EA7779C00FEF184 /* CartNavigationDestination.swift */; };
+		F82D53A42EAE72A600FEF184 /* CartServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D53A32EAE72A600FEF184 /* CartServiceProtocol.swift */; };
+		F82D53A62EAE72F100FEF184 /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D53A52EAE72E900FEF184 /* CartService.swift */; };
+		F82D53A82EAE742D00FEF184 /* CartRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D53A72EAE742B00FEF184 /* CartRequests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +135,9 @@
 		F82D52C12EA6375300FEF184 /* CartBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBackButton.swift; sourceTree = "<group>"; };
 		F82D52C42EA6438C00FEF184 /* SuccessPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPaymentView.swift; sourceTree = "<group>"; };
 		F82D52C62EA7779C00FEF184 /* CartNavigationDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartNavigationDestination.swift; sourceTree = "<group>"; };
+		F82D53A32EAE72A600FEF184 /* CartServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartServiceProtocol.swift; sourceTree = "<group>"; };
+		F82D53A52EAE72E900FEF184 /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
+		F82D53A72EAE742B00FEF184 /* CartRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRequests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -432,7 +438,10 @@
 		F82D52732EA62F7A00FEF184 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				F82D53A72EAE742B00FEF184 /* CartRequests.swift */,
+				F82D53A52EAE72E900FEF184 /* CartService.swift */,
 				F82D52742EA62F8300FEF184 /* CartRequestsConstants.swift */,
+				F82D53A32EAE72A600FEF184 /* CartServiceProtocol.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -595,6 +604,7 @@
 				ABC5E1B72C31FC70002B4068 /* ServicesAssembly.swift in Sources */,
 				F821EC952E9E71CE0003AB8A /* View+Extensions.swift in Sources */,
 				F821ECC72E9FC4B60003AB8A /* EmptyCartView.swift in Sources */,
+				F82D53A82EAE742D00FEF184 /* CartRequests.swift in Sources */,
 				F821EC3A2E9D05900003AB8A /* CartViewModel.swift in Sources */,
 				F82D52C52EA6439E00FEF184 /* SuccessPaymentView.swift in Sources */,
 				2A1DCDF72EAA431B00FBF27D /* WebView.swift in Sources */,
@@ -603,7 +613,9 @@
 				F82D52752EA62F9C00FEF184 /* CartRequestsConstants.swift in Sources */,
 				ABC5E1E82C320610002B4068 /* NftDetailBridgeView.swift in Sources */,
 				F82D51AD2EA0187700FEF184 /* CartSizeConstants.swift in Sources */,
+				F82D53A62EAE72F100FEF184 /* CartService.swift in Sources */,
 				ABC5E1E62C320585002B4068 /* LinePageControl.swift in Sources */,
+				F82D53A42EAE72A600FEF184 /* CartServiceProtocol.swift in Sources */,
 				ABC5E1DD2C3204DC002B4068 /* CellsReusingUtils.swift in Sources */,
 				ABC5E1B52C31FC57002B4068 /* TabBarView.swift in Sources */,
 				ABC5E1E42C32055B002B4068 /* ErrorView.swift in Sources */,

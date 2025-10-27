@@ -2,13 +2,29 @@ import SwiftUI
 
 @Observable
 final class PaymentViewModel {
-    var currencies: [Currency] = MockСurrencies.сurrencies
+    private let service: CartServiceProtocol
+    
+    var currencies: [Currency] = []
     var selectedCurrencyId: String = ""
     
     let cartItems: [CartItem]
     
-    init(cartItems: [CartItem]) {
+    init(service: CartServiceProtocol = CartService.shared, cartItems: [CartItem]) {
+        self.service = service
         self.cartItems = cartItems
+        loadCurrency()
+    }
+    
+    func loadCurrency() {
+        if currencies.isEmpty {
+            Task {
+                do {
+                    self.currencies = try await service.fetchCurrencies()
+                } catch {
+                    print("При загрузке валют произошла ошибка: \(error)")
+                }
+            }
+        }
     }
     
     func selectCurrency(_ currency: Currency) {
@@ -25,11 +41,3 @@ final class PaymentViewModel {
     }
 }
 
-struct MockСurrencies {
-    static let сurrencies: [Currency] = [
-        Currency(id: "1", title: "Bitcoin", name: "ВТС", image: "https://"),
-        Currency(id: "2", title: "Dogecoin", name: "DOGE", image: "https://"),
-        Currency(id: "3", title: "Tether", name: "USDT", image: "https://"),
-        Currency(id: "4", title: "Apecoin", name: "APE", image: "https://")
-    ]
-}
