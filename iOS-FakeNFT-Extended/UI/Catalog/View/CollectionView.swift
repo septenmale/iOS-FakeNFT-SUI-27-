@@ -5,6 +5,7 @@ struct CollectionView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var likedNft: Set<String> = []
     @State private var cartNft: Set<String> = []
+    @State private var showAuthorWebView = false
     
     var body: some View {
         ScrollView {
@@ -45,9 +46,11 @@ struct CollectionView: View {
                             .font(.regular13)
                             .foregroundColor(.yaBlack)
                         
-                        Text(collection.author)
-                            .font(.regular15)
-                            .foregroundColor(.uniBlue)
+                        NavigationLink(destination: CommonWebView(url: "https://practicum.yandex.ru/")) {
+                            Text(collection.author)
+                                .font(.regular15)
+                                .foregroundColor(.uniBlue)
+                        }
                         
                         Spacer()
                     }
@@ -86,7 +89,11 @@ struct CollectionView: View {
         .edgesIgnoringSafeArea(.top)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: $showAuthorWebView) {
+            CommonWebView(url: "https://practicum.yandex.ru/")
+        }
     }
+    
     
     private func toggleLike(for id: String) {
         if likedNft.contains(id) {
