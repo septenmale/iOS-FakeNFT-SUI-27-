@@ -3,7 +3,7 @@ import SwiftUI
 struct TabBarView: View {
     
     init() {
-        UITabBar.appearance().unselectedItemTintColor = .black
+        UITabBar.appearance().unselectedItemTintColor = .yaBlack
     }
     
     var body: some View {
