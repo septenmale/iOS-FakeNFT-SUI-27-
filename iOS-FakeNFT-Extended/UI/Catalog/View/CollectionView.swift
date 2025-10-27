@@ -94,7 +94,6 @@ struct CollectionView: View {
         }
     }
     
-    
     private func toggleLike(for id: String) {
         if likedNft.contains(id) {
             likedNft.remove(id)

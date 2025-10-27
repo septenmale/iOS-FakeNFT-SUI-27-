@@ -16,7 +16,7 @@ struct CatalogSample {
         ),
         CatalogNft(
             title: "Brown",
-            collection: CollectionSample.collection, 
+            collection: CollectionSample.collection,
             catalogImage: "frying.pan",
             author: "Richard Feynman",
             descriptionNft: "Коричневы - как древесная лесная кора."
