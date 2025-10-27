@@ -4,6 +4,7 @@ struct CartView: View {
     
     @State private var viewModel = CartViewModel()
     @State private var showDeleteConfirmation = false
+    @State private var showSortDialog = false
     @State private var itemToDelete: CartItem?
     
     @State private var path: [CartNavigationDestination] = []
@@ -56,6 +57,30 @@ struct CartView: View {
                 }
             }
             .toolbar(showDeleteConfirmation ? .hidden : .visible, for: .tabBar)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showSortDialog = true
+                    } label: {
+                        Image("sort")
+                            .foregroundColor(.yaBlack)
+                    }
+                }
+            }
+            .confirmationDialog(
+                String(localized: "Sorting"),
+                isPresented: $showSortDialog,
+                titleVisibility: .visible
+            ) {
+                ForEach(CartSortType.allCases) { type in
+                    Button(LocalizedStringKey(type.rawValue)) {
+                        viewModel.selectSort(type)
+                        showSortDialog = false
+                    }
+                }
+
+                Button(String(localized: "Close"), role: .cancel) {}
+            }
             .animation(.easeInOut(duration: 0.2), value: viewModel.items.count)
         }
     }

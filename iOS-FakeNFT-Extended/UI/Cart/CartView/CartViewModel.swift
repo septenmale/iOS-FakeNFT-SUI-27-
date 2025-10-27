@@ -3,10 +3,19 @@ import SwiftUI
 @Observable
 final class CartViewModel {
    
-    var items: [CartItem] = MockItems.items
+    var items: [CartItem]
+    private let sortStorage: CartSortStorage
+    var selectedSort: CartSortType
     
     var totalPrice: Double {
         items.reduce(0) { $0 + $1.price }
+    }
+    
+    init(items: [CartItem] = MockItems.items, sortStorage: CartSortStorage = CartSortStorage()) {
+        self.items = items
+        self.sortStorage = sortStorage
+        self.selectedSort = sortStorage.selectedSort
+        sort(selectedSort)
     }
     
     func removeItem(_ item: CartItem) {
@@ -17,6 +26,23 @@ final class CartViewModel {
     
     func clearCart() {
         items.removeAll()
+    }
+    
+    func selectSort(_ type: CartSortType) {
+        selectedSort = type
+        sortStorage.selectedSort = type
+        sort(type)
+    }
+    
+    private func sort(_ type: CartSortType) {
+        switch type {
+        case .price:
+            items.sort { $0.price < $1.price }
+        case .rating:
+            items.sort { $0.rating > $1.rating }
+        case .name:
+            items.sort { $0.name < $1.name }
+        }
     }
 }
 

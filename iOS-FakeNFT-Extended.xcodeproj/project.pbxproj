@@ -62,6 +62,7 @@
 		F82D53A42EAE72A600FEF184 /* CartServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D53A32EAE72A600FEF184 /* CartServiceProtocol.swift */; };
 		F82D53A62EAE72F100FEF184 /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D53A52EAE72E900FEF184 /* CartService.swift */; };
 		F82D53A82EAE742D00FEF184 /* CartRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D53A72EAE742B00FEF184 /* CartRequests.swift */; };
+		F82D53AC2EAF855E00FEF184 /* CartSortSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82D53AB2EAF854D00FEF184 /* CartSortSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		F82D53A32EAE72A600FEF184 /* CartServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartServiceProtocol.swift; sourceTree = "<group>"; };
 		F82D53A52EAE72E900FEF184 /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
 		F82D53A72EAE742B00FEF184 /* CartRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRequests.swift; sourceTree = "<group>"; };
+		F82D53AB2EAF854D00FEF184 /* CartSortSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSortSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -190,6 +192,7 @@
 				F82D526E2EA24EC000FEF184 /* CartView */,
 				F82D526D2EA24E8E00FEF184 /* Helpers */,
 				F821EC942E9E71B70003AB8A /* View+Extensions.swift */,
+				F82D53AB2EAF854D00FEF184 /* CartSortSettings.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				ABC5E16E2C31F5AF002B4068 /* ContentView.swift in Sources */,
 				ABC5E1DF2C3204FB002B4068 /* LoadingView.swift in Sources */,
 				ABC5E1A42C31F800002B4068 /* NetworkClient.swift in Sources */,
+				F82D53AC2EAF855E00FEF184 /* CartSortSettings.swift in Sources */,
 				ABC5E1D32C320438002B4068 /* NftDetailAssembly.swift in Sources */,
 				ABC5E1A12C31F6D7002B4068 /* Nft.swift in Sources */,
 				ABC5E1AE2C31FB7F002B4068 /* NftByIdRequest.swift in Sources */,
