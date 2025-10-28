@@ -3,6 +3,7 @@ import SwiftUI
 @Observable
 final class PaymentViewModel {
     private let service: CartServiceProtocol
+    var isLoading: Bool = false
     
     var currencies: [Currency] = []
     var selectedCurrencyId: String = ""
@@ -17,7 +18,11 @@ final class PaymentViewModel {
     
     func loadCurrency() {
         if currencies.isEmpty {
+            isLoading = true
             Task {
+                defer {
+                    Task { @MainActor in self.isLoading = false }
+                }
                 do {
                     self.currencies = try await service.fetchCurrencies()
                 } catch {
