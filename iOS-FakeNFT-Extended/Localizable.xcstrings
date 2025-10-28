@@ -11,6 +11,9 @@
         }
       }
     },
+    "%@ ETH" : {
+
+    },
     "Catalog.openNft" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -65,9 +68,6 @@
     "Hello, CartView!" : {
 
     },
-    "Hello, CollectionView!" : {
-
-    },
     "Hello, ProfileView!" : {
 
     },
@@ -116,6 +116,9 @@
           }
         }
       }
+    },
+    "Автор коллекции:" : {
+
     },
     "Закрыть" : {
 

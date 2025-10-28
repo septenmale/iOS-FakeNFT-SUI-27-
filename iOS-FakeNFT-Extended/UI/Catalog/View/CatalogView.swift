@@ -77,43 +77,6 @@ struct CatalogView: View {
 }
 
 private extension CatalogView {
-    func section(title: String, items: [String]) -> some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text(title)
-                    .font(.system(size: 50, weight: .semibold))
-                    .foregroundColor(.primary)
-                Spacer()
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .background(Color.gray.opacity(0.05))
-            
-            ForEach(Array(items.enumerated()), id: \.offset) { index, item in
-                VStack(spacing: 0) {
-                    HStack {
-                        Text(item)
-                            .font(.system(size: 16, weight: .regular))
-                            .foregroundColor(.primary)
-                        Spacer()
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 14)
-                    
-                    if index < items.count - 1 {
-                        Rectangle()
-                            .fill(Color.gray.opacity(0.1))
-                            .frame(height: 0.5)
-                            .padding(.leading, 16)
-                    }
-                }
-            }
-            
-            Rectangle()
-                .fill(Color.gray.opacity(0.2))
-                .frame(height: 8)
-        }
-    }
     
     func applySorting() {
         switch selectedSortOption {

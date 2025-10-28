@@ -9,6 +9,7 @@ struct CommonWebView: View {
         WebView.init(url: URL(string: url))
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarBackButtonHidden()
+            .toolbar(.hidden, for: .tabBar)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
