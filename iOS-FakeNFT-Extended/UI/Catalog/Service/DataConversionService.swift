@@ -44,7 +44,7 @@ final class DataConversionService {
                 
                 let collectionNFT = CollectionNFT(
                     id: nft.id,
-                    name: "NFT \(nft.id.prefix(8))",
+                    name: nft.name, // Используем настоящее имя из API
                     like: false,
                     rating: Int.random(in: 1...5),
                     price: Double.random(in: 0.1...10.0),
@@ -54,10 +54,10 @@ final class DataConversionService {
                 nftItems.append(collectionNFT)
             } catch {
                 print("Error loading NFT \(nftId): \(error)")
-                //  NFT без изображения в случае ошибки
+                // NFT без изображения в случае ошибки
                 let collectionNFT = CollectionNFT(
                     id: nftId,
-                    name: "NFT \(nftId.prefix(8))",
+                    name: "NFT \(nftId.prefix(8))", // Fallback имя
                     like: false,
                     rating: Int.random(in: 1...5),
                     price: Double.random(in: 0.1...10.0),
