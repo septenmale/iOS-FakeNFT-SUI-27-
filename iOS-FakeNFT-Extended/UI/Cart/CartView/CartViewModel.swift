@@ -48,8 +48,8 @@ final class CartViewModel {
 
 struct MockItems {
     static let items: [CartItem] = [
-        CartItem(imageURL: "https://", name: "April", rating: 1, price: 1.78),
-        CartItem(imageURL: "https://", name: "Greena", rating: 3, price: 3.08),
-        CartItem(imageURL: "https://", name: "Spring", rating: 5, price: 2.10)
+        CartItem(id: "e8c1f0b6-5caf-4f65-8e5b-12f4bcb29efb", imageURL: "https://", name: "April", rating: 1, price: 1.78),
+        CartItem(id: "de7c0518-6379-443b-a4be-81f5a7655f48", imageURL: "https://", name: "Greena", rating: 3, price: 3.08),
+//        CartItem(id: "ca34d35a-4507-47d9-9312-5ea7053994c0", imageURL: "https://", name: "Spring", rating: 5, price: 2.10)
     ]
 }

@@ -1,5 +1,6 @@
 enum CartServiceError: Error {
     case fetchCurrencyError
+    case payOrderError
 }
 
 final class CartService: CartServiceProtocol {
@@ -17,6 +18,15 @@ final class CartService: CartServiceProtocol {
             return try await networkClient.send(request: request)
         } catch {
             throw CartServiceError.fetchCurrencyError
+        }
+    }
+    
+    func payOrder(nftIds: [String]) async throws {
+        let request = PayOrderRequest(nfts: nftIds)
+        do {
+            _ = try await networkClient.sendCart(request: request)
+        } catch {
+            throw CartServiceError.payOrderError
         }
     }
 }

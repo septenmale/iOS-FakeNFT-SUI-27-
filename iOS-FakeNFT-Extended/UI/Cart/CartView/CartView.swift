@@ -45,7 +45,7 @@ struct CartView: View {
                 switch destination {
                 case .payment(let cartItems):
                     PaymentView(
-                        viewModel: PaymentViewModel(cartItems: cartItems),
+                        viewModel: PaymentViewModel(cartItemsId: cartItems.map(\.id)),
                         onSuccess: {
                             path.append(.success)
                         })

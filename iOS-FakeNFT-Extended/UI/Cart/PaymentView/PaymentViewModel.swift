@@ -8,27 +8,26 @@ final class PaymentViewModel {
     var currencies: [Currency] = []
     var selectedCurrencyId: String = ""
     
-    let cartItems: [CartItem]
+    let cartItemsId: [String]
     
-    init(service: CartServiceProtocol = CartService.shared, cartItems: [CartItem]) {
+    init(service: CartServiceProtocol = CartService.shared, cartItemsId: [String]) {
         self.service = service
-        self.cartItems = cartItems
-        loadCurrency()
+        self.cartItemsId = cartItemsId
+        Task { await loadCurrency() }
     }
     
-    func loadCurrency() {
-        if currencies.isEmpty {
-            isLoading = true
-            Task {
-                defer {
-                    Task { @MainActor in self.isLoading = false }
-                }
-                do {
-                    self.currencies = try await service.fetchCurrencies()
-                } catch {
-                    print("При загрузке валют произошла ошибка: \(error)")
-                }
-            }
+    @MainActor
+    func loadCurrency() async {
+        guard currencies.isEmpty else { return }
+        
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            currencies = try await service.fetchCurrencies()
+            print("Валюты загружены:", currencies.count)
+        } catch {
+            print("Ошибка при загрузке валют:", error)
         }
     }
     
@@ -37,12 +36,33 @@ final class PaymentViewModel {
         selectedCurrencyId = currency.id
     }
     
-    func payOrder() async -> Bool { //Заглушка пока не подключены запросы
+    func payOrder() async -> Bool {
         guard !selectedCurrencyId.isEmpty else {
             return false
         }
-        try? await Task.sleep(for: .seconds(1))
-        return Bool.random() 
+        do {
+            try await service.payOrder(nftIds: cartItemsId)
+            return true
+        } catch {
+            if let error = error as? NetworkClientError {
+                switch error {
+                case .httpStatusCode(let code):
+                    print("Сервер вернул код \(code) при оплате")
+                case .urlRequestError(let err):
+                    print("Ошибка формирования запроса: \(err.localizedDescription)")
+                case .urlSessionError:
+                    print("Ошибка сети или URLSession")
+                case .parsingError:
+                    print("Ошибка парсинга ответа")
+                case .incorrectRequest(let msg):
+                    print("Некорректный запрос: \(msg)")
+                }
+            } else {
+                print("Неизвестная ошибка: \(error.localizedDescription)")
+            }
+            return false
+        }
     }
 }
+
 
