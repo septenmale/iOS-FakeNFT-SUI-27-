@@ -18,10 +18,13 @@ struct CollectionCell: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
+                        .frame(width: 108, height: 108)
+                        .clipped()
                 } else {
-                    Image("")
+                    Image(systemName: "scribble.variable")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
+                        .frame(width: 40, height: 40)
                         .foregroundColor(.gray)
                 }
                 
@@ -32,6 +35,7 @@ struct CollectionCell: View {
                         .frame(width: 40, height: 40)
                         .foregroundColor(isLiked ? .uniRed : .uniWhite)
                         .padding(-6)
+                        .clipShape(Circle())
                 }
                 .padding(4)
             }
@@ -53,6 +57,7 @@ struct CollectionCell: View {
                     Text(item.name)
                         .font(.bold17)
                         .foregroundColor(.yaBlack)
+                        .lineLimit(1)
                     
                     Text("\(formattedPrice) ETH")
                         .font(.medium10)
