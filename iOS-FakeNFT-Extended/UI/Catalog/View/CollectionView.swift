@@ -1,10 +1,12 @@
 import SwiftUI
+import SwiftData
 
 struct CollectionView: View {
     let collection: CatalogNft
     @Environment(\.dismiss) private var dismiss
-    @State private var likedNft: Set<String> = []
-    @State private var cartNft: Set<String> = []
+    @Environment(\.modelContext) private var modelContext
+    @Query private var likedNfts: [LikedNft]
+    @Query private var cartNfts: [InCartNft]
     @State private var showAuthorWebView = false
     
     var body: some View {
@@ -70,8 +72,8 @@ struct CollectionView: View {
                     ForEach(collection.collection, id: \.id) { nft in
                         CollectionCell(
                             item: nft,
-                            isLiked: likedNft.contains(nft.id),
-                            isInCart: cartNft.contains(nft.id),
+                            isLiked: likedNfts.contains { $0.id == nft.id },
+                            isInCart: cartNfts.contains { $0.id == nft.id },
                             onLikeTap: {
                                 toggleLike(for: nft.id)
                             },
@@ -95,18 +97,32 @@ struct CollectionView: View {
     }
     
     private func toggleLike(for id: String) {
-        if likedNft.contains(id) {
-            likedNft.remove(id)
+        if let existingLike = likedNfts.first(where: { $0.id == id }) {
+            modelContext.delete(existingLike)
         } else {
-            likedNft.insert(id)
+            let newLike = LikedNft(id: id)
+            modelContext.insert(newLike)
+        }
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Error saving like: \(error)")
         }
     }
     
     private func toggleCart(for id: String) {
-        if cartNft.contains(id) {
-            cartNft.remove(id)
+        if let existingCartItem = cartNfts.first(where: { $0.id == id }) {
+            modelContext.delete(existingCartItem)
         } else {
-            cartNft.insert(id)
+            let newCartItem = InCartNft(id: id)
+            modelContext.insert(newCartItem)
+        }
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Error saving cart: \(error)")
         }
     }
 }
