@@ -64,7 +64,7 @@ actor DefaultNetworkClient: NetworkClient {
            guard let endpoint = request.endpoint else {
                throw NetworkClientError.incorrectRequest("Empty endpoint")
            }
-
+       
            var urlRequest = URLRequest(url: endpoint)
            urlRequest.httpMethod = request.httpMethod.rawValue
 
@@ -74,7 +74,7 @@ actor DefaultNetworkClient: NetworkClient {
                urlRequest.httpBody = dtoEncoded
            }
            urlRequest.addValue(RequestConstants.token, forHTTPHeaderField: "X-Practicum-Mobile-Token")
-
+        
            return urlRequest
        }
     

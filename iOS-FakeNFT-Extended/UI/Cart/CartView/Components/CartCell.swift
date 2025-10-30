@@ -16,14 +16,19 @@ struct CartCell: View {
         .contentShape(Rectangle())
         .buttonStyle(.plain)
     }
-    
+
     private var image: some View {
-        Image(item.name)
-            .resizable()
-            .scaledToFill()
-            .frame(width: CartSizeConstants.cellImageSize, height: CartSizeConstants.cellImageSize)
-            .clipped()
-            .cornerRadius(CartSizeConstants.cellImageCornerRadius)
+        AsyncImage(url: URL(string: item.imageURL)) { image in
+            image
+                .resizable()
+                .scaledToFill()
+                .frame(width: CartSizeConstants.cellImageSize,
+                       height: CartSizeConstants.cellImageSize)
+                .clipped()
+                .cornerRadius(CartSizeConstants.cellImageCornerRadius)
+        } placeholder: {
+            ProgressView()
+        }
     }
     
     private var infoSection: some View {
@@ -60,6 +65,3 @@ struct CartCell: View {
     }
 }
 
-#Preview {
-    CartCell(item: MockItems.items[0], onDeleteTapped: {})
-}

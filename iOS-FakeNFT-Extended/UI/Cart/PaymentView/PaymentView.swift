@@ -126,23 +126,4 @@ struct PaymentView: View {
     }
 }
 
-//#Preview {
-//    let mockCurrencies = [
-//        Currency(id: "1", title: "Bitcoin", name: "ВТС", image: "https://"),
-//        Currency(id: "2", title: "Dogecoin", name: "DOGE", image: "https://"),
-//        Currency(id: "3", title: "Tether", name: "USDT", image: "https://"),
-//        Currency(id: "4", title: "Apecoin", name: "APE", image: "https://")
-//    ]
-//    
-//    let mockItems = [
-//        CartItem(id: "1", imageURL: "", name: "April", rating: 4, price: 1.78),
-//        CartItem(id: "2", imageURL: "", name: "Greena", rating: 5, price: 3.08)
-//    ]
-//    
-//    let viewModel = PaymentViewModel(cartItems: mockItems)
-//    
-//    NavigationStack {
-//        PaymentView(viewModel: viewModel, onSuccess: {})
-//    }
-//}
 

@@ -25,7 +25,6 @@ final class PaymentViewModel {
         
         do {
             currencies = try await service.fetchCurrencies()
-            print("Валюты загружены:", currencies.count)
         } catch {
             print("Ошибка при загрузке валют:", error)
         }

@@ -1,31 +1,81 @@
 import SwiftUI
+import SwiftData
 
 @Observable
 final class CartViewModel {
-   
-    var items: [CartItem]
     private let sortStorage: CartSortStorage
-    var selectedSort: CartSortType
+    private let service: CartServiceProtocol
+    private let context: ModelContext
     
+    var isLoading: Bool = true
+    var items: [CartItem] = []
+    var selectedSort: CartSortType
     var totalPrice: Double {
         items.reduce(0) { $0 + $1.price }
     }
     
-    init(items: [CartItem] = MockItems.items, sortStorage: CartSortStorage = CartSortStorage()) {
-        self.items = items
+    init(context: ModelContext,
+         service: CartServiceProtocol = CartService.shared,
+         sortStorage: CartSortStorage = CartSortStorage())
+    {
+        self.service = service
         self.sortStorage = sortStorage
         self.selectedSort = sortStorage.selectedSort
-        sort(selectedSort)
+        self.context = context
+    }
+    
+    @MainActor
+    func loadCart() async {
+        do {
+            isLoading = true
+            let loaded = try await loadCartItems()
+            items = loaded
+            sort(selectedSort)
+            isLoading = false
+            
+        } catch {
+            print("Failed to load cart: \(error)")
+        }
+    }
+    
+    func loadCartItems() async throws -> [CartItem] {
+        
+        let descriptor = FetchDescriptor<InCartNft>()
+        let savedItems = try context.fetch(descriptor)
+        let ids = savedItems.map(\.id)
+        
+        guard !ids.isEmpty else { return [] }
+        let cartItems = try await service.fetchCartItems(by: ids)
+        
+        return cartItems
+        
     }
     
     func removeItem(_ item: CartItem) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items.remove(at: index)
         }
+        do {
+            let itemIdToDelete = item.id
+            let predicate = #Predicate<InCartNft> { nft in
+                nft.id == itemIdToDelete
+            }
+            try context.delete(model: InCartNft.self, where: predicate)
+            try context.save()
+            
+        } catch {
+            print("Ошибка удаления NFT \(item.id) из SwiftData: \(error)")
+        }
     }
     
     func clearCart() {
         items.removeAll()
+        do {
+            try context.delete(model: InCartNft.self)
+            try context.save()
+        } catch {
+            print("Ошибка при очистке всех записей InCartNft из SwiftData: \(error)")
+        }
     }
     
     func selectSort(_ type: CartSortType) {
@@ -46,10 +96,3 @@ final class CartViewModel {
     }
 }
 
-struct MockItems {
-    static let items: [CartItem] = [
-        CartItem(id: "e8c1f0b6-5caf-4f65-8e5b-12f4bcb29efb", imageURL: "https://", name: "April", rating: 1, price: 1.78),
-        CartItem(id: "de7c0518-6379-443b-a4be-81f5a7655f48", imageURL: "https://", name: "Greena", rating: 3, price: 3.08),
-//        CartItem(id: "ca34d35a-4507-47d9-9312-5ea7053994c0", imageURL: "https://", name: "Spring", rating: 5, price: 2.10)
-    ]
-}

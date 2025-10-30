@@ -1,6 +1,7 @@
 enum CartServiceError: Error {
     case fetchCurrencyError
     case payOrderError
+    case fetchNFTError
 }
 
 final class CartService: CartServiceProtocol {
@@ -27,6 +28,22 @@ final class CartService: CartServiceProtocol {
             _ = try await networkClient.sendCart(request: request)
         } catch {
             throw CartServiceError.payOrderError
+        }
+    }
+    
+    func fetchCartItems(by ids: [String]) async throws -> [CartItem] {
+        try await withThrowingTaskGroup(of: CartItem.self) { group in
+            for id in ids {
+                group.addTask {
+                    let request = FetchNFTByIdRequest(id: id)
+                    return try await self.networkClient.send(request: request)
+                }
+            }
+            var result: [CartItem] = []
+            for try await item in group {
+                result.append(item)
+            }
+            return result
         }
     }
 }
