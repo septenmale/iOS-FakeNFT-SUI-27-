@@ -73,12 +73,14 @@ struct CartView: View {
             }
             .toolbar(showDeleteConfirmation ? .hidden : .visible, for: .tabBar)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showSortDialog = true
-                    } label: {
-                        Image("sort")
-                            .foregroundColor(.yaBlack)
+                if !showDeleteConfirmation {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showSortDialog = true
+                        } label: {
+                            Image("sort")
+                                .foregroundColor(.yaBlack)
+                        }
                     }
                 }
             }
