@@ -34,8 +34,8 @@ struct PaymentView: View {
             String(localized: "Payment failed"),
             isPresented: $showPaymentErrorAlert
         ) {
-            Button(String(localized: "Cancel"), role: .cancel) {}
-            Button(String(localized: "Repeat")) {
+            Button("Cancel", role: .cancel) {}
+            Button("Repeat") {
                 pay()
             }
         }

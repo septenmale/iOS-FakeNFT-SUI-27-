@@ -8,7 +8,7 @@
 import SwiftData
 
 @Model
-class LikedNft {
+final class LikedNft {
     @Attribute(.unique) var id: String
 
     init(id: String) {

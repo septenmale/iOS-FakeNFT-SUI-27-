@@ -14,7 +14,7 @@ struct CartView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
-                if let viewModel = viewModel {
+                if let viewModel {
                     if viewModel.isLoading {
                         VStack {
                             ProgressView("Loading NFTs...")
@@ -82,7 +82,7 @@ struct CartView: View {
                         Button {
                             showSortDialog = true
                         } label: {
-                            Image("sort")
+                            Image(.sort)
                                 .foregroundColor(.yaBlack)
                         }
                     }
@@ -99,7 +99,7 @@ struct CartView: View {
                         showSortDialog = false
                     }
                 }
-                Button(String(localized: "Close"), role: .cancel) {}
+                Button("Close", role: .cancel) {}
             }
             .animation(.easeInOut(duration: 0.2), value: viewModel?.items.count)
             .onAppear {
