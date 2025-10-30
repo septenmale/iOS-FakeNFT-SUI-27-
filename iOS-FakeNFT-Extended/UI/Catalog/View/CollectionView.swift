@@ -3,6 +3,8 @@ import SwiftData
 
 struct CollectionView: View {
     let collection: CatalogNft
+    let coverImage: UIImage?
+    
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query private var likedNfts: [LikedNft]
@@ -16,12 +18,33 @@ struct CollectionView: View {
                     Rectangle()
                         .fill(Color.yaLightGrey)
                     
-                    Image(collection.catalogImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 310)
-                        .clipped()
-                        .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
+                    if let coverImage = coverImage {
+                        Image(uiImage: coverImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: 310)
+                            .clipped()
+                    } else {
+                        AsyncImage(url: URL(string: collection.catalogImage)) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                                    .frame(height: 310)
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(height: 310)
+                                    .clipped()
+                            case .failure:
+                                Rectangle()
+                                    .fill(Color.yaLightGrey)
+                                    .frame(height: 310)
+                            @unknown default:
+                                EmptyView()
+                            }
+                        }
+                    }
                     
                     Button(action: {
                         dismiss()
@@ -129,6 +152,9 @@ struct CollectionView: View {
 
 #Preview {
     NavigationView {
-        CollectionView(collection: CatalogSample.catalog[0])
+        CollectionView(
+            collection: CatalogSample.catalog[0],
+            coverImage: UIImage(named: "fireworks")
+        )
     }
 }

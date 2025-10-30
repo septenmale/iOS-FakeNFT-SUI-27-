@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CatalogCell: View {
     let item: CatalogNft
-    @State private var coverImage: UIImage?
+    let coverImage: UIImage?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -35,32 +35,15 @@ struct CatalogCell: View {
         }
         .padding(.horizontal, -1)
         .padding(.vertical, 8)
-        .onAppear {
-            loadCoverImage()
-        }
-    }
-    
-    private func loadCoverImage() {
-        guard let url = URL(string: item.catalogImage) else { return }
-        
-        Task {
-            do {
-                let (data, _) = try await URLSession.shared.data(from: url)
-                if let image = UIImage(data: data) {
-                    await MainActor.run {
-                        self.coverImage = image
-                    }
-                }
-            } catch {
-                print("Error loading cover image: \(error)")
-            }
-        }
     }
 }
 
 #Preview {
-    CatalogCell(item: CatalogSample.catalog[0])
-        .padding(.horizontal)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
+    CatalogCell(
+        item: CatalogSample.catalog[0],
+        coverImage: UIImage(named: "fireworks")
+    )
+    .padding(.horizontal)
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .background(Color.white)
 }
