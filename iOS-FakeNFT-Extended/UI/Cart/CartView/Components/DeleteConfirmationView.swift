@@ -13,11 +13,15 @@ struct DeleteConfirmationView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 12) {
-                Image(item.name)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: CartSizeConstants.modalImageSize, height: CartSizeConstants.modalImageSize)
-                    .cornerRadius(CartSizeConstants.modalImageRadius)
+                AsyncImage(url: URL(string: item.imageURL)) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: CartSizeConstants.modalImageSize, height: CartSizeConstants.modalImageSize)
+                        .cornerRadius(CartSizeConstants.modalImageRadius)
+                } placeholder: {
+                    ProgressView()
+                }
                 
                 VStack(spacing: 0) {
                     Text(String(localized:"Are you sure you want to"))

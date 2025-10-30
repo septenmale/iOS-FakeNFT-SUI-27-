@@ -2,13 +2,32 @@ import SwiftUI
 
 @Observable
 final class PaymentViewModel {
-    var currencies: [Currency] = MockСurrencies.сurrencies
+    private let service: CartServiceProtocol
+    var isLoading: Bool = false
+    
+    var currencies: [Currency] = []
     var selectedCurrencyId: String = ""
     
-    let cartItems: [CartItem]
+    let cartItemsId: [String]
     
-    init(cartItems: [CartItem]) {
-        self.cartItems = cartItems
+    init(service: CartServiceProtocol = CartService.shared, cartItemsId: [String]) {
+        self.service = service
+        self.cartItemsId = cartItemsId
+        Task { await loadCurrency() }
+    }
+    
+    @MainActor
+    func loadCurrency() async {
+        guard currencies.isEmpty else { return }
+        
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            currencies = try await service.fetchCurrencies()
+        } catch {
+            print("Ошибка при загрузке валют:", error)
+        }
     }
     
     func selectCurrency(_ currency: Currency) {
@@ -16,20 +35,33 @@ final class PaymentViewModel {
         selectedCurrencyId = currency.id
     }
     
-    func payOrder() async -> Bool { //Заглушка пока не подключены запросы
+    func payOrder() async -> Bool {
         guard !selectedCurrencyId.isEmpty else {
             return false
         }
-        try? await Task.sleep(for: .seconds(1))
-        return Bool.random() 
+        do {
+            try await service.payOrder(nftIds: cartItemsId)
+            return true
+        } catch {
+            if let error = error as? NetworkClientError {
+                switch error {
+                case .httpStatusCode(let code):
+                    print("Сервер вернул код \(code) при оплате")
+                case .urlRequestError(let err):
+                    print("Ошибка формирования запроса: \(err.localizedDescription)")
+                case .urlSessionError:
+                    print("Ошибка сети или URLSession")
+                case .parsingError:
+                    print("Ошибка парсинга ответа")
+                case .incorrectRequest(let msg):
+                    print("Некорректный запрос: \(msg)")
+                }
+            } else {
+                print("Неизвестная ошибка: \(error.localizedDescription)")
+            }
+            return false
+        }
     }
 }
 
-struct MockСurrencies {
-    static let сurrencies: [Currency] = [
-        Currency(id: "1", title: "Bitcoin", name: "ВТС", image: "https://"),
-        Currency(id: "2", title: "Dogecoin", name: "DOGE", image: "https://"),
-        Currency(id: "3", title: "Tether", name: "USDT", image: "https://"),
-        Currency(id: "4", title: "Apecoin", name: "APE", image: "https://")
-    ]
-}
+

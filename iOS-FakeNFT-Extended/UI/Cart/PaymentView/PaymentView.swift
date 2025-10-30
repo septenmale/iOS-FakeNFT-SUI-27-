@@ -12,12 +12,18 @@ struct PaymentView: View {
     
     var body: some View {
         VStack {
-            currencyList
+            if viewModel.isLoading {
+                Spacer()
+                ProgressView()
+            } else {
+                currencyList
+            }
             Spacer()
             payBlock
         }
         .navigationTitle(String(localized: "Select payment method"))
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
         .toolbar(.hidden, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -28,8 +34,8 @@ struct PaymentView: View {
             String(localized: "Payment failed"),
             isPresented: $showPaymentErrorAlert
         ) {
-            Button(String(localized: "Cancel"), role: .cancel) {}
-            Button(String(localized: "Repeat")) {
+            Button("Cancel", role: .cancel) {}
+            Button("Repeat") {
                 pay()
             }
         }
@@ -71,7 +77,7 @@ struct PaymentView: View {
                 .foregroundColor(.yaBlack)
             
             NavigationLink {
-                WebView(url: URL(string: CartRequestsConstants.webViewURL))
+                WebView(url: URL(string: CartRequestConstants.webViewURL))
                     .navigationTitle(String(localized: "User agreement:"))
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden(true)
@@ -120,23 +126,4 @@ struct PaymentView: View {
     }
 }
 
-#Preview {
-    let mockCurrencies = [
-        Currency(id: "1", title: "Bitcoin", name: "ВТС", image: "https://"),
-        Currency(id: "2", title: "Dogecoin", name: "DOGE", image: "https://"),
-        Currency(id: "3", title: "Tether", name: "USDT", image: "https://"),
-        Currency(id: "4", title: "Apecoin", name: "APE", image: "https://")
-    ]
-    
-    let mockItems = [
-        CartItem(imageURL: "", name: "April", rating: 4, price: 1.78),
-        CartItem(imageURL: "", name: "Greena", rating: 5, price: 3.08)
-    ]
-    
-    let viewModel = PaymentViewModel(cartItems: mockItems)
-    
-    NavigationStack {
-        PaymentView(viewModel: viewModel, onSuccess: {})
-    }
-}
 

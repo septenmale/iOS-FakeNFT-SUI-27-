@@ -11,7 +11,7 @@ struct WebView: UIViewRepresentable {
 
     func updateUIView(_ webView: WKWebView, context: Context) {
         guard let url = url else {return}
-        if webView.url != url { 
+        if webView.url != url {
             webView.load(URLRequest(url: url))
         }
     }
@@ -19,6 +19,6 @@ struct WebView: UIViewRepresentable {
 
 //MARK: - Preview
 #Preview {
-    WebView(url: URL(string: CartRequestsConstants.webViewURL))
+    WebView(url: URL(string: "https://practicum.yandex.ru/"))
         .edgesIgnoringSafeArea(.all)
 }

@@ -21,12 +21,17 @@ struct CurrencyCell: View {
     }
     
     private var image: some View {
-        Image(currency.title)
-            .resizable()
-            .scaledToFill()
-            .frame(width: CartSizeConstants.carrencyImageSize, height: CartSizeConstants.carrencyImageSize)
-            .clipped()
-            .cornerRadius(CartSizeConstants.carrencyImageCornerRadius)
+        AsyncImage(url: URL(string: currency.image)) { image in
+            image
+                .resizable()
+                .scaledToFill()
+        } placeholder: {
+            ProgressView()
+                .tint(.gray)
+        }
+        .frame(width: CartSizeConstants.currencyImageSize, height: CartSizeConstants.currencyImageSize)
+        .clipped()
+        .cornerRadius(CartSizeConstants.currencyImageCornerRadius)
     }
     
     private var text: some View {
@@ -41,8 +46,4 @@ struct CurrencyCell: View {
     }
 }
 
-#Preview {
-    CurrencyCell(currency: MockСurrencies.сurrencies[0], isSelected: false)
-    CurrencyCell(currency: MockСurrencies.сurrencies[0], isSelected: true)
-}
 

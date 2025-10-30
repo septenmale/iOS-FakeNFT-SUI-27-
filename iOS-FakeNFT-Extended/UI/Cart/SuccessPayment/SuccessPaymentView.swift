@@ -16,7 +16,7 @@ struct SuccessPaymentView: View {
     }
 
     private var image: some View {
-        Image("SuccessPaymentImage")
+        Image("successPaymentImage")
             .resizable()
             .scaledToFit()
             .frame(
@@ -35,7 +35,7 @@ struct SuccessPaymentView: View {
     }
     
     private var button: some View {
-        Button(String(localized: "Return to cart")) {
+        Button("Return to cart") {
             onReturn()
         }
         .font(.bold17)

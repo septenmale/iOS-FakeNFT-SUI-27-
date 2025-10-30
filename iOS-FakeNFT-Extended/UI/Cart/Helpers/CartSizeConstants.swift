@@ -18,9 +18,9 @@ enum CartSizeConstants {
     static let cellImageSize: CGFloat = 108
     static let cellImageCornerRadius: CGFloat = 12
     
-    // Секция "CarrencyCell"
-    static let carrencyImageSize: CGFloat = 36
-    static let carrencyImageCornerRadius: CGFloat = 6
+    // Секция "CurrencyCell"
+    static let currencyImageSize: CGFloat = 36
+    static let currencyImageCornerRadius: CGFloat = 6
     
     // MARK: - Модальное окно (DeleteConfirmationView)
     
