@@ -9,8 +9,7 @@ struct CartView: View {
     @State private var path: [CartNavigationDestination] = []
     @State private var showDeleteConfirmation = false
     @State private var showSortDialog = false
-    
-    @State var hideTabBar = false
+    @State private var hideTabBar = false
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -48,6 +47,8 @@ struct CartView: View {
                             itemToDelete = nil
                         }
                     )
+                    .onAppear { hideTabBar = true }
+                    .onDisappear { hideTabBar = false }
                 }
             }
             .task {
@@ -63,15 +64,18 @@ struct CartView: View {
                         viewModel: PaymentViewModel(cartItemsId: cartItems.map(\.id)),
                         onSuccess: {
                             path.append(.success)
-                        })
+                        },
+                    )
+                    .onAppear { hideTabBar = true }
                 case .success:
                     SuccessPaymentView {
                         viewModel?.clearCart()
                         path.removeLast(path.count)
                     }
+                    .onAppear {hideTabBar = true}
                 }
             }
-            .toolbar(showDeleteConfirmation ? .hidden : .visible, for: .tabBar)
+            .toolbar(hideTabBar ? .hidden : .visible, for: .tabBar)
             .toolbar {
                 if !showDeleteConfirmation {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -98,6 +102,9 @@ struct CartView: View {
                 Button(String(localized: "Close"), role: .cancel) {}
             }
             .animation(.easeInOut(duration: 0.2), value: viewModel?.items.count)
+            .onAppear {
+                hideTabBar = false
+            }
         }
     }
     
