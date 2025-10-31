@@ -11,7 +11,19 @@ struct User: Identifiable {
     let id: UUID = UUID()
     let name: String
     let imageData: Data?
+    let description: String
+    let website: String
+    let NFTCollectionIDs: [String]
     let NFTCount: Int
+    
+    init(name: String? = nil, imageData: Data? = nil, description: String? = nil, website: String? = nil, NFTCollectionIDs: [String]? = nil, NFTCount: Int? = nil) {
+        self.name = name ?? "Unknown User"
+        self.imageData = imageData
+        self.description = description ?? "No Description"
+        self.website = website ?? "https://practicum.yandex.ru/"
+        self.NFTCollectionIDs = NFTCollectionIDs ?? []
+        self.NFTCount = NFTCount ?? 0
+    }
 }
 
 enum StatsFilterStrategy: String {
@@ -22,8 +34,8 @@ enum StatsFilterStrategy: String {
 @Observable final class StatsViewModel: StatsViewModelProtocol {
     
     var showUserProfileView = false
-
     var showActionSheet = false
+    var isTabBarVisible: Visibility = .visible
     
     var filteredUsers: [User] {
         get {
@@ -74,8 +86,8 @@ enum StatsFilterStrategy: String {
 @Observable final class StatsViewModelMock: StatsViewModelProtocol {
 
     var showActionSheet = false
-    
     var showUserProfileView = false
+    var isTabBarVisible: Visibility = .visible
     
     var filteredUsers: [User] {
         get {
@@ -96,9 +108,18 @@ enum StatsFilterStrategy: String {
     
     private(set) var users: [User] = [
         User(name: "Alex", imageData: nil, NFTCount: 32),
-        User(name: "Helen", imageData: nil, NFTCount: 21),
-        User(name: "Martin", imageData: nil, NFTCount: 16),
-        User(name: "Olga", imageData: nil, NFTCount: 132),
+        User(name: "Helen", imageData: nil, description:
+                """
+                Hi, I'm Helen! And I really like NFTs. I love exploring the world of digital art, discovering unique creators, and collecting pieces that tell a story. For me, NFTs are more than just collectibles — they're a way to support artists and be part of a new creative revolution. I’m always looking for new projects, communities, and ideas that push the boundaries of digital ownership and creativity.
+                """,
+             NFTCollectionIDs: ["randomID", "anotherRandomID", "lastRandomID"], NFTCount: 21),
+        User(name: "Martin",
+             imageData: nil,
+             NFTCollectionIDs: ["randomID", "anotherRandomID", "lastRandomID"],
+             NFTCount: 16),
+        User(name: "Olga",
+             imageData: nil,
+             NFTCount: 132),
 //      MARK: данные иконки имитируют реальные изображения
         User(name: "Garry",
              imageData: UIImage(systemName: "person.circle.fill",
@@ -141,6 +162,8 @@ enum StatsFilterStrategy: String {
 protocol StatsViewModelProtocol {
     var showActionSheet: Bool { get set }
     var showUserProfileView: Bool { get set }
+    var isTabBarVisible: Visibility { get set }
+    
     var selectedUser: User? { get }
     
     var filteredUsers: [User] { get }

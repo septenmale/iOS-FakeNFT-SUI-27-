@@ -11,6 +11,9 @@ extension Font {
     static var bold17: Font {
         Font.system(size: 17, weight: .bold)
     }
+    static var bold20: Font {
+        Font.system(size: 20, weight: .bold)
+    }
     static var bold22: Font {
         Font.system(size: 22, weight: .bold)
     }
@@ -30,5 +33,8 @@ extension Font {
     }
     static var regular17: Font {
         Font.system(size: 17, weight: .regular)
+    }
+    static var regular20: Font {
+        Font.system(size: 20, weight: .regular)
     }
 }
