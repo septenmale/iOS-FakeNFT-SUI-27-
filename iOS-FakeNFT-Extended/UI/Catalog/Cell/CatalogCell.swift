@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CatalogCell: View {
     let item: CatalogNft
+    let coverImage: UIImage?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -9,10 +10,16 @@ struct CatalogCell: View {
                 Rectangle()
                     .fill(Color.yaLightGrey)
                 
-                Image(item.catalogImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 343)
+                if let coverImage = coverImage {
+                    Image(uiImage: coverImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 179)
+                        .clipped()
+                } else {
+                    ProgressView()
+                        .frame(height: 179)
+                }
             }
             .frame(height: 179)
             .cornerRadius(12)
@@ -32,8 +39,11 @@ struct CatalogCell: View {
 }
 
 #Preview {
-    CatalogCell(item: CatalogSample.catalog[0])
-        .padding(.horizontal)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
+    CatalogCell(
+        item: CatalogSample.catalog[0],
+        coverImage: UIImage(named: "fireworks")
+    )
+    .padding(.horizontal)
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .background(Color.white)
 }
