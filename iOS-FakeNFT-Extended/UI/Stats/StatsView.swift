@@ -18,18 +18,38 @@ struct StatsView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            statsListView
-            .padding(.horizontal, 16)
-            .padding(.top, 20)
-            .background(Color.yaWhite)
-            
-            .onAppear {
-                withAnimation {
-                    viewModel.isTabBarVisible = .visible
-                }
+        ZStack {
+            NavigationStack {
+                mainView
+                    
+                    .padding(.horizontal, 16)
+                    .padding(.top, 20)
+                    .background(Color.yaWhite)
+                
+                    .onAppear {
+                        withAnimation {
+                            viewModel.isTabBarVisible = .visible
+                        }
+                    }
+                
+                    .navigationDestination(isPresented: $viewModel.showUserProfileView) {
+                        StatsUserProfileView(user: viewModel.selectedUser ?? User())
+                            .onAppear {
+                                viewModel.isTabBarVisible = .hidden
+                            }
+                    }
             }
-            
+            .disabled(viewModel.isLoading)
+            CommonProgressView()
+                .opacity(viewModel.isLoading ? 1 : 0)
+        }
+        .task {
+            await viewModel.fetchUsers()
+        }
+    }
+    
+    private var mainView: some View {
+        statsListView
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -55,15 +75,6 @@ struct StatsView: View {
                     }
                 ])
             }
-            
-            .navigationDestination(isPresented: $viewModel.showUserProfileView) {
-                let selectedUser = viewModel.selectedUser ?? User()
-                StatsUserProfileView(user: selectedUser)
-                    .onAppear {
-                        viewModel.isTabBarVisible = .hidden
-                    }
-            }
-        }
     }
     
     private var statsListView: some View {
@@ -89,6 +100,7 @@ struct StatsView: View {
                     .frame(width: 20)
                 StatsCell(userName: user.name,
                           userImageData: user.imageData,
+                          isLoadingImage: user.isLoadingImage,
                           NFTCount: user.NFTCount)
             }
         }

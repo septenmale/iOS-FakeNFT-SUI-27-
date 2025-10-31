@@ -34,7 +34,7 @@ struct TabBarView: View {
             
 //          MARK: на данный момент используются моковые данные для демонстрации работы
             
-            StatsView(viewModel: StatsViewModelMock())
+            StatsView()
                 .tabItem {
                     Label(
                         NSLocalizedString("Tab.stats", comment: ""),

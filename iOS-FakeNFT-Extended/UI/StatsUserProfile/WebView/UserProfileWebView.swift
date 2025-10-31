@@ -15,6 +15,7 @@ struct UserProfileWebView: View {
     
     var body: some View {
         WebView.init(url: URL(string: url))
+            .toolbar(.hidden, for: .tabBar)
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarBackButtonHidden()
             .toolbar {
