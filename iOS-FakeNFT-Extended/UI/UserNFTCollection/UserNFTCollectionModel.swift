@@ -6,57 +6,88 @@
 //
 import Foundation
 
-struct UserCollectionNFTItem: Codable, Sendable {
+struct UserCollectionNFTItem {
     let id: String
     let name: String
     let rating: Int
     let price: Double
-    let imageData: Data?
+    let imageUrl: URL?
     
     init(
         id: String,
         name: String? = nil,
         rating: Int? = nil,
         price: Double? = nil,
-        imageData: Data? = nil,
-        like: Bool = false,
-        basket: Bool = false
+        imageUrl: URL? = nil,
     ) {
         self.id = id
         self.name = name ?? "Unknown"
         self.rating = rating ?? 0
         self.price = price ?? 0.00
-        self.imageData = imageData
+        self.imageUrl = imageUrl
     }
     
-    func getID() -> String {
-        return id
+    init(from model: UserCollectionNFTJsonModel) {
+        self.id = model.id ?? ""
+        self.name = model.name ?? ""
+        self.price = model.price ?? 0.00
+        self.rating = model.rating ?? 0
+        guard let imageUrlString = model.images?.first else {
+            self.imageUrl = nil
+            return
+        }
+        self.imageUrl = URL(string: imageUrlString)
     }
 }
 
-//MARK: Будет сделано в эпике 3/3
+struct UserCollectionNFTJsonModel: Sendable, Decodable, Identifiable {
+    let createdAt: String?
+    let name: String?
+    let images: [String]?
+    let rating: Int?
+    let description: String?
+    let price: Double?
+    let author: String?
+    let id: String?
+}
+
 actor UserNFTCollectionModel: UserNFTCollectionModelProtocol {
-    func fetchUserCollection() async throws -> [UserCollectionNFTItem] {
-        return []
-    }
-}
-
-actor UserNFTCollectionModelMock: UserNFTCollectionModelProtocol {
-    private let collection: [UserCollectionNFTItem] =
-    [UserCollectionNFTItem(id: "randomID", name: "Hornet", rating: 5, price: 100), UserCollectionNFTItem(id: "anotherRandomID", name: "Trobbio", rating: 2, price: 11),
-     UserCollectionNFTItem(id: "lastRandomID", name: "Lace", rating: 4, price: 99.99),
-     UserCollectionNFTItem(id: "randomIDD", name: "Mrs Kitty", rating: 1, price: 1),
-     UserCollectionNFTItem(id: "anotherRandomIDD", name: "Goose", rating: 3, price: 15.66),
-     UserCollectionNFTItem(id: "lastRandomIDD", name: "Who?", rating: 2, price: 2.01)
-    ]
     
-    func fetchUserCollection() async throws -> [UserCollectionNFTItem] {
-        sleep(3)
-        return collection
+    func fetchUserCollection(idsArray nfts: [String]) async throws -> [UserCollectionNFTJsonModel] {
+        var result: [UserCollectionNFTJsonModel] = []
+        for nft in nfts {
+            let urlString = "\(RequestConstants.baseURL)/api/v1/nft/\(nft)"
+            guard let url = URL(string: urlString) else {
+                throw APIError.invalidURL
+            }
+            
+            let request = {
+                var request = URLRequest(url: url)
+                request.addValue(RequestConstants.token, forHTTPHeaderField: "X-Practicum-Mobile-Token")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                return request
+            }()
+            
+            let provider = CommonDataProvider(request: request)
+            
+            result.append(try await provider.fetchDataWithDecoding())
+        }
+        return result
+    }
+    
+    func fetchNftImage(urlString: String) async throws -> Data {
+        guard let url = URL(string: urlString) else {
+            throw APIError.invalidURL
+        }
+        let provider = CommonDataProvider(request: URLRequest(url: url))
+        
+        let result = try await provider.fetchData()
+        
+        return result
     }
 }
 
 protocol UserNFTCollectionModelProtocol {
-    func fetchUserCollection() async throws -> [UserCollectionNFTItem]
+    func fetchUserCollection(idsArray nfts: [String]) async throws -> [UserCollectionNFTJsonModel]
 }
 

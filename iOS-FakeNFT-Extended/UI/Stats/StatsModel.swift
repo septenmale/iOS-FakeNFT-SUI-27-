@@ -26,6 +26,9 @@ enum APIError: Error {
 }
 
 actor StatsModel: StatsModelProtocol {
+    
+    private var fetchedImages: [String: Data] = [:]
+    
     func fetchUserStats() async throws -> [UserStatsJsonModel] {
         let urlString = "\(RequestConstants.baseURL)/api/v1/users"
         guard let url = URL(string: urlString) else {
@@ -45,58 +48,23 @@ actor StatsModel: StatsModelProtocol {
     }
     
     func fetchUserImage(urlString: String) async throws -> Data {
+        let storedImage = fetchedImages[urlString]
+        
+        if let storedImage {
+            return storedImage
+        }
+        
         guard let url = URL(string: urlString) else {
             throw APIError.invalidURL
         }
         
         let provider = CommonDataProvider(request: URLRequest(url: url))
         
-        return try await provider.fetchData()
-    }
-}
-
-class CommonDataProvider {
-    let request: URLRequest
-    
-    init(request: URLRequest) {
-        self.request = request
-    }
-    
-    func fetchDataWithDecoding<T: Decodable>() async throws -> T {
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let result = try await provider.fetchData()
         
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw APIError.responseConvertationError
-        }
-        guard (200...299).contains(httpResponse.statusCode) else {
-            throw APIError.badResponse(httpResponse.statusCode)
-        }
-        
-        let decoder = {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .useDefaultKeys
-            return decoder
-        }()
-        
-        guard let result = try? decoder.decode(T.self, from: data) else {
-            throw APIError.decodingFailed
-        }
+        fetchedImages[urlString] = result
         
         return result
-    }
-    
-    func fetchData() async throws -> Data {
-
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw APIError.responseConvertationError
-        }
-        guard (200...299).contains(httpResponse.statusCode) else {
-            throw APIError.badResponse(httpResponse.statusCode)
-        }
-        
-        return data
     }
 }
 

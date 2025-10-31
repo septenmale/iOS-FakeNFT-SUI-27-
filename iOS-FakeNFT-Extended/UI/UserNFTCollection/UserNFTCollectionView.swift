@@ -44,6 +44,23 @@ struct UserNFTCollectionView: View {
             CommonProgressView()
                 .opacity(viewModel.isLoading ? 1 : 0)
         }
+        .overlay {
+            ZStack {
+                Rectangle()
+                    .fill(Color.uniBackground)
+                    .ignoresSafeArea()
+                CommonAlertView(alertTitle: "Не удалось получить данные",
+                cancelAction: {
+                    dismiss()
+                },
+                resetAction: {
+                    Task {
+                        await viewModel.fetchUserCollection()
+                    }
+                })
+            }
+            .opacity(viewModel.isError ? 1 : 0)
+        }
         .onAppear {
             viewModel.insertModelContext(context: context)
         }

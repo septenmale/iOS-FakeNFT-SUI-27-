@@ -67,7 +67,7 @@ enum StatsFilterStrategy: String {
     private(set) var selectedUser: User?
     private(set) var users: [User]
     
-    private(set) var isError: Bool = false
+    var isError: Bool = false
     private(set) var isLoading: Bool = false
     
     private let model: StatsModelProtocol
@@ -131,7 +131,6 @@ enum StatsFilterStrategy: String {
                     defer {
                         self?.users[index].isLoadingImage = false
                     }
-                    
                     guard let imageData = try? await self?.model.fetchUserImage(urlString: imageURLString) else {
                         return
                     }
@@ -238,7 +237,7 @@ protocol StatsViewModelProtocol {
     var selectedUser: User? { get }
     var filteredUsers: [User] { get }
     
-    var isError: Bool { get }
+    var isError: Bool { get set }
     var isLoading: Bool { get }
     
     func setFilterStrategy(_ strategy: StatsFilterStrategy)

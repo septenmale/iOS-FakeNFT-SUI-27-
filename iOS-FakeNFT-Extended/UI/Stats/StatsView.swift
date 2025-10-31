@@ -21,7 +21,6 @@ struct StatsView: View {
         ZStack {
             NavigationStack {
                 mainView
-                    
                     .padding(.horizontal, 16)
                     .padding(.top, 20)
                     .background(Color.yaWhite)
@@ -39,10 +38,28 @@ struct StatsView: View {
                             }
                     }
             }
-            .disabled(viewModel.isLoading)
+            .disabled(viewModel.isLoading || viewModel.isError)
             CommonProgressView()
                 .opacity(viewModel.isLoading ? 1 : 0)
         }
+        .overlay {
+            ZStack {
+                Rectangle()
+                    .fill(Color.uniBackground)
+                    .ignoresSafeArea()
+                CommonAlertView(alertTitle: "Не удалось получить данные",
+                cancelAction: {
+                    viewModel.isError = false
+                },
+                resetAction: {
+                    Task {
+                        await viewModel.fetchUsers()
+                    }
+                })
+            }
+            .opacity(viewModel.isError ? 1 : 0)
+        }
+        
         .task {
             await viewModel.fetchUsers()
         }
