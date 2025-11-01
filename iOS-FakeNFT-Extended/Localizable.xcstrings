@@ -1,15 +1,20 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
-<<<<<<< HEAD
+    "%.2f ETH" : {
+
+    },
     "%@ (%lld)" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@ (%2$lld)"
-=======
-    "%.2f ETH" : {
+          }
+        }
+      }
+    },
+    "%@ ETH" : {
 
     },
     "%lld NFT" : {
@@ -21,15 +26,10 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы уверены, что хотите "
->>>>>>> e85612e80ceff3140be856569c2c61f3ece72cb0
           }
         }
       }
     },
-<<<<<<< HEAD
-    "%@ ETH" : {
-
-=======
     "By making a purchase, you agree to the terms of the" : {
       "localizations" : {
         "ru" : {
@@ -92,7 +92,6 @@
           }
         }
       }
->>>>>>> e85612e80ceff3140be856569c2c61f3ece72cb0
     },
     "Catalog.openNft" : {
       "extractionState" : "stale",
@@ -324,19 +323,6 @@
         }
       }
     },
-<<<<<<< HEAD
-    "Автор коллекции:" : {
-
-    },
-    "Загрузка коллекций..." : {
-
-    },
-    "Закрыть" : {
-
-    },
-    "Сортировка" : {
-
-=======
     "To payment" : {
       "localizations" : {
         "ru" : {
@@ -366,7 +352,18 @@
           }
         }
       }
->>>>>>> e85612e80ceff3140be856569c2c61f3ece72cb0
+    },
+    "Автор коллекции:" : {
+
+    },
+    "Загрузка коллекций..." : {
+
+    },
+    "Закрыть" : {
+
+    },
+    "Сортировка" : {
+
     }
   },
   "version" : "1.0"
