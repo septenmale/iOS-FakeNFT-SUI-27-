@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@Observable class User: Identifiable {
+@Observable final class User: Identifiable, Sendable {
     let id: String
     let name: String
     var imageData: Data?
