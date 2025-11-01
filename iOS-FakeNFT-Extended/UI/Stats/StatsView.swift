@@ -105,6 +105,11 @@ struct StatsView: View {
         }
         .listStyle(.plain)
         .listRowSpacing(8)
+        .refreshable {
+            Task {
+                await viewModel.fetchUsers()
+            }
+        }
     }
     
     private func createCellButton(user: User, number: Int) -> some View {

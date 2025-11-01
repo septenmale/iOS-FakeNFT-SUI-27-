@@ -32,8 +32,6 @@ struct TabBarView: View {
                     )
                 }
             
-//          MARK: на данный момент используются моковые данные для демонстрации работы
-            
             StatsView()
                 .tabItem {
                     Label(
