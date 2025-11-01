@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SuccessPaymentView: View {
     let onReturn: () -> Void
-
+    
     var body: some View {
         VStack {
             Spacer()
@@ -14,7 +14,7 @@ struct SuccessPaymentView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }
-
+    
     private var image: some View {
         Image("successPaymentImage")
             .resizable()
@@ -51,4 +51,3 @@ struct SuccessPaymentView: View {
 #Preview {
     SuccessPaymentView(onReturn:{})
 }
-

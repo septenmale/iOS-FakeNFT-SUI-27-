@@ -57,6 +57,11 @@ struct CartView: View {
                     await viewModel?.loadCart()
                 }
             }
+            .onAppear {
+                Task {
+                    await viewModel?.refreshCart()
+                }
+            }
             .navigationDestination(for: CartNavigationDestination.self) { destination in
                 switch destination {
                 case .payment(let cartItems):
@@ -156,5 +161,3 @@ struct CartView: View {
 #Preview {
     CartView()
 }
-
-

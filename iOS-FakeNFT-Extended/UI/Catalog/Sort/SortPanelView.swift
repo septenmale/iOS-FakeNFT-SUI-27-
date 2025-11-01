@@ -39,7 +39,7 @@ struct SortPanelView: View {
     private func sortOptionRow(title: String, option: SortOption) -> some View {
         Button(action: {
             selectedSortOption = option
-            SortSettings.selectedSortOption = option 
+            SortSettings.selectedSortOption = option
             withAnimation(.easeInOut(duration: 0.3)) {
                 isShowingSortOptions = false
             }

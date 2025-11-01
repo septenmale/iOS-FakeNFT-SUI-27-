@@ -71,7 +71,9 @@ struct CollectionView: View {
                             .font(.regular13)
                             .foregroundColor(.yaBlack)
                         
-                        NavigationLink(destination: CommonWebView(url: "https://practicum.yandex.ru/")) {
+                        Button(action: {
+                            showAuthorWebView = true
+                        }) {
                             Text(collection.author)
                                 .font(.regular15)
                                 .foregroundColor(.uniBlue)
@@ -137,9 +139,11 @@ struct CollectionView: View {
     private func toggleCart(for id: String) {
         if let existingCartItem = cartNfts.first(where: { $0.id == id }) {
             modelContext.delete(existingCartItem)
+            print("Removed NFT \(id) from cart")
         } else {
             let newCartItem = InCartNft(id: id)
             modelContext.insert(newCartItem)
+            print("Added NFT \(id) to cart")
         }
         
         do {

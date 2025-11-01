@@ -11,4 +11,3 @@ struct CartItem: Identifiable, Decodable, Hashable {
         images.first?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
     }
 }
-

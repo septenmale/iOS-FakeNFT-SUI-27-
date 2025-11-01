@@ -10,7 +10,7 @@ enum CartSortType: String, CaseIterable, Identifiable {
 
 final class CartSortStorage: ObservableObject {
     @AppStorage(Keys.selectedSortType) private var sortTypeRawValue: String = CartSortType.name.rawValue
-
+    
     var selectedSort: CartSortType {
         get { CartSortType(rawValue: sortTypeRawValue) ?? .name }
         set { sortTypeRawValue = newValue.rawValue }

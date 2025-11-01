@@ -43,4 +43,3 @@ enum CartSizeConstants {
     static let successButtonHeight: CGFloat = 60
     static let successButtonRadius: CGFloat = 16
 }
-

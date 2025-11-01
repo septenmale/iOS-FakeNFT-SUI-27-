@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CartCell: View {
-
+    
     let item: CartItem
     let onDeleteTapped: () -> Void
     
@@ -16,7 +16,7 @@ struct CartCell: View {
         .contentShape(Rectangle())
         .buttonStyle(.plain)
     }
-
+    
     private var image: some View {
         AsyncImage(url: URL(string: item.imageURL)) { image in
             image
@@ -64,4 +64,3 @@ struct CartCell: View {
         .buttonStyle(.plain)
     }
 }
-

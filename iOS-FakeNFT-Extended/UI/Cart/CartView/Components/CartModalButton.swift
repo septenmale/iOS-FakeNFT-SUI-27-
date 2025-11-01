@@ -5,7 +5,7 @@ struct CartModalButton: View {
     let title: String
     let foreground: Color
     let action: () -> Void
-
+    
     init(
         _ title: String,
         foreground: Color = .white,
@@ -15,7 +15,7 @@ struct CartModalButton: View {
         self.foreground = foreground
         self.action = action
     }
-
+    
     var body: some View {
         Button(action: action) {
             Text(title)

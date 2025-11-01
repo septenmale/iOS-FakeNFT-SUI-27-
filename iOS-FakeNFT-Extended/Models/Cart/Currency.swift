@@ -6,4 +6,3 @@ struct Currency: Identifiable, Codable {
     let name: String
     let image: String
 }
-

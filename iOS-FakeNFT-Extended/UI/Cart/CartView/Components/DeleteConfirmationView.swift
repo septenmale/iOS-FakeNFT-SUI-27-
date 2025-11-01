@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DeleteConfirmationView: View {
-   
+    
     let item: CartItem
     let onConfirm: () -> Void
     let onCancel: () -> Void

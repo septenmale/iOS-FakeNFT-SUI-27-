@@ -100,7 +100,7 @@ struct PaymentView: View {
         let isDisabled = viewModel.selectedCurrencyId.isEmpty
         
         return Button(action: {
-           pay()
+            pay()
         }) {
             Text(String(localized: "Pay"))
                 .font(.bold17)
@@ -125,5 +125,3 @@ struct PaymentView: View {
         }
     }
 }
-
-

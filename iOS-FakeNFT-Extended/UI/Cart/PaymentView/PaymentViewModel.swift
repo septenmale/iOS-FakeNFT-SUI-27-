@@ -63,5 +63,3 @@ final class PaymentViewModel {
         }
     }
 }
-
-

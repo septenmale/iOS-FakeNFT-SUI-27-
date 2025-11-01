@@ -35,6 +35,7 @@ final class CartViewModel {
             
         } catch {
             print("Failed to load cart: \(error)")
+            isLoading = false
         }
     }
     
@@ -44,9 +45,12 @@ final class CartViewModel {
         let savedItems = try context.fetch(descriptor)
         let ids = savedItems.map(\.id)
         
+        print("Loading cart items with IDs: \(ids)")
+        
         guard !ids.isEmpty else { return [] }
         let cartItems = try await service.fetchCartItems(by: ids)
         
+        print("Successfully loaded \(cartItems.count) cart items")
         return cartItems
         
     }
@@ -62,6 +66,7 @@ final class CartViewModel {
             }
             try context.delete(model: InCartNft.self, where: predicate)
             try context.save()
+            print("Successfully removed NFT \(item.id) from cart")
             
         } catch {
             print("Ошибка удаления NFT \(item.id) из SwiftData: \(error)")
@@ -73,6 +78,7 @@ final class CartViewModel {
         do {
             try context.delete(model: InCartNft.self)
             try context.save()
+            print("Cart cleared successfully")
         } catch {
             print("Ошибка при очистке всех записей InCartNft из SwiftData: \(error)")
         }
@@ -94,5 +100,8 @@ final class CartViewModel {
             items.sort { $0.name < $1.name }
         }
     }
+    
+    func refreshCart() async {
+        await loadCart()
+    }
 }
-
