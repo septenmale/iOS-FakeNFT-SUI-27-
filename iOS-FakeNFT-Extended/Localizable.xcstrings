@@ -4,6 +4,19 @@
     "%.2f ETH" : {
 
     },
+    "%@ (%lld)" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$lld)"
+          }
+        }
+      }
+    },
+    "%@ ETH" : {
+
+    },
     "%lld NFT" : {
 
     },
@@ -81,6 +94,7 @@
       }
     },
     "Catalog.openNft" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -338,6 +352,18 @@
           }
         }
       }
+    },
+    "Автор коллекции:" : {
+
+    },
+    "Загрузка коллекций..." : {
+
+    },
+    "Закрыть" : {
+
+    },
+    "Сортировка" : {
+
     }
   },
   "version" : "1.0"
