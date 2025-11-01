@@ -9,25 +9,21 @@ import Foundation
 actor UserNFTCollectionModel: UserNFTCollectionModelProtocol {
     
     func fetchUserCollection(idsArray nfts: [String]) async throws -> [UserCollectionNFTJsonModel] {
-        var result: [UserCollectionNFTJsonModel] = []
-        for nft in nfts {
-            let urlString = "\(RequestConstants.baseURL)/api/v1/nft/\(nft)"
-            guard let url = URL(string: urlString) else {
-                throw APIError.invalidURL
+        let result: [UserCollectionNFTJsonModel] = try await withThrowingTaskGroup(of: UserCollectionNFTJsonModel?.self) { group in
+            var result: [UserCollectionNFTJsonModel] = []
+            for nft in nfts {
+                group.addTask {
+                    try await self.fetchUserNft(nftId: nft)
+                }
             }
             
-            let request = {
-                var request = URLRequest(url: url)
-                request.addValue(RequestConstants.token, forHTTPHeaderField: "X-Practicum-Mobile-Token")
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
-                return request
-            }()
-            
-            
-            
-            let provider = CommonDataProvider(request: request)
-            
-            result.append(try await provider.fetchDataWithDecoding())
+            for try await item in group {
+                guard let item else {
+                    continue
+                }
+                result.append(item)
+            }
+            return result
         }
         return result
     }
@@ -41,6 +37,24 @@ actor UserNFTCollectionModel: UserNFTCollectionModelProtocol {
         let result = try await provider.fetchData()
         
         return result
+    }
+    
+    private func fetchUserNft(nftId: String) async throws -> UserCollectionNFTJsonModel {
+        let urlString = "\(RequestConstants.baseURL)/api/v1/nft/\(nftId)"
+        guard let url = URL(string: urlString) else {
+            throw APIError.invalidURL
+        }
+        
+        let request = {
+            var request = URLRequest(url: url)
+            request.addValue(RequestConstants.token, forHTTPHeaderField: "X-Practicum-Mobile-Token")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            return request
+        }()
+        
+        let provider = CommonDataProvider(request: request)
+        
+        return try await provider.fetchDataWithDecoding()
     }
 }
 
