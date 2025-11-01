@@ -9,7 +9,7 @@ import Foundation
 actor UserNFTCollectionModel: UserNFTCollectionModelProtocol {
     
     func fetchUserCollection(idsArray nfts: [String]) async throws -> [UserCollectionNFTJsonModel] {
-        let result: [UserCollectionNFTJsonModel] = try await withThrowingTaskGroup(of: UserCollectionNFTJsonModel?.self) { group in
+        let result: [UserCollectionNFTJsonModel] = try await withThrowingTaskGroup(of: UserCollectionNFTJsonModel.self) { group in
             var result: [UserCollectionNFTJsonModel] = []
             for nft in nfts {
                 group.addTask {
@@ -18,9 +18,6 @@ actor UserNFTCollectionModel: UserNFTCollectionModelProtocol {
             }
             
             for try await item in group {
-                guard let item else {
-                    continue
-                }
                 result.append(item)
             }
             return result
