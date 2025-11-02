@@ -85,23 +85,7 @@ enum StatsFilterStrategy: String {
         
         do {
             let users = try await model.fetchUserStatsWithImages()
-            self.users = users
-//  MARK: было интересно реализовать асинхронную загрузку изображений без использования KingFisher или AsyncImage, однако Task.detached выглядит крайне неправильно, как Вы считаете?
-//            for (index, userModel) in users.enumerated() {
-//                guard let imageURLString = userModel.avatar else { continue }
-//                self.users[index].isLoadingImage = true
-
-//                Task.detached(priority: .background) { [weak self] in
-//                    defer {
-//                        self?.users[index].isLoadingImage = false
-//                    }
-//                    guard let imageData = try? await self?.model.fetchUserImage(urlString: imageURLString) else {
-//                        return
-//                    }
-//                        self?.users[index].imageData = imageData
-//                }
-//            }
-            
+            self.users = users            
         } catch {
             isError = true
             print(error)
