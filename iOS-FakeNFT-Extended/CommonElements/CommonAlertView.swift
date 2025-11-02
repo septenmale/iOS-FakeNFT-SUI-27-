@@ -8,7 +8,7 @@ import SwiftUI
 
 struct CommonAlertView: View {
     
-    let alertTitle: String
+    let alertTitle: LocalizedStringKey
     
     var cancelAction: (() -> Void)?
     var resetAction: (() -> Void)?

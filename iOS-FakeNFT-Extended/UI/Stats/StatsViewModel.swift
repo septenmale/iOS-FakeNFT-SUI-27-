@@ -85,7 +85,7 @@ enum StatsFilterStrategy: String {
         
         do {
             let users = try await model.fetchUserStatsWithImages()
-            self.users = users            
+            self.users = users
         } catch {
             isError = true
             print(error)

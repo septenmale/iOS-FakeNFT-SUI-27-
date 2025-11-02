@@ -12,6 +12,12 @@
     },
     "Catalog.openNft" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Nft"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22,6 +28,12 @@
     },
     "Error.network" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network error"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32,6 +44,12 @@
     },
     "Error.repeat" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -42,6 +60,12 @@
     },
     "Error.title" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -52,6 +76,12 @@
     },
     "Error.unknown" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown error"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69,6 +99,12 @@
     "Tab.cart" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cart"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -79,6 +115,12 @@
     },
     "Tab.catalog" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catalog"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -90,6 +132,12 @@
     "Tab.profile" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +149,12 @@
     "Tab.stats" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -110,31 +164,104 @@
       }
     },
     "Закрыть" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
     },
     "Коллекция NFT" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFT collection"
+          }
+        }
+      }
     },
     "Коллекция NFT (%lld)" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NFT collection (%lld)"
+          }
+        }
+      }
+    },
+    "Не удалось получить данные" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to get data"
+          }
+        }
+      }
     },
     "Отмена" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
     },
     "Перейти на сайт пользователя" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show user site"
+          }
+        }
+      }
     },
     "По имени" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By name"
+          }
+        }
+      }
     },
     "По рейтингу" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By rating"
+          }
+        }
+      }
     },
     "Повторить" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
+          }
+        }
+      }
     },
     "Сортировка" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
