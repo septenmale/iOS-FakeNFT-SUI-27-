@@ -21,13 +21,15 @@ import SwiftData
     
     init(userCollectionIds: [String], model: UserNFTCollectionModelProtocol? = nil) {
         self.userCollectionIds = userCollectionIds
-        self.model = model ?? UserNFTCollectionModelMock()
+        self.model = model ?? UserNFTCollectionModel()
     }
     
     func fetchUserCollection() async {
+        isError = false
         isLoading = true
         do {
-            fetchedElements = try await model.fetchUserCollection()
+            let fetchedModels = try await model.fetchUserCollection(idsArray: userCollectionIds)
+            fetchedElements = fetchedModels.map( { UserCollectionNFTItem(from: $0) } )
         } catch {
             isError = true
         }

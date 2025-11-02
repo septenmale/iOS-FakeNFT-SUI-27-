@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+//import Kingfisher
 
 struct StatsCell: View {
     
     let userName: String
     let userImageData: Data?
+    let isLoadingImage: Bool
     
     let NFTCount: Int
     
@@ -29,20 +31,28 @@ struct StatsCell: View {
     }
     
     private var cellInfo: some View {
-        GeometryReader { geometry in
-            HStack(spacing: 8) {
-                Image(data: userImageData, placeholder: "person.circle.fill")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: 28)
-                    .clipShape(Circle())
-                
-                Text(userName)
-                    .font(textFont)
-                Spacer()
-                Text("\(NFTCount)")
-                    .font(textFont)
+        HStack(spacing: 8) {
+            Group {
+                if !isLoadingImage {
+                    Image(data: userImageData, placeholder: "person.circle.fill")
+                        .resizable()
+                        .scaledToFill()
+                } else {
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.yaLightGrey)
+                        ProgressView()
+                    }
+                }
             }
+            .frame(width: 28)
+            .clipShape(Circle())
+            
+            Text(userName)
+                .font(textFont)
+            Spacer()
+            Text("\(NFTCount)")
+                .font(textFont)
         }
     }
 }

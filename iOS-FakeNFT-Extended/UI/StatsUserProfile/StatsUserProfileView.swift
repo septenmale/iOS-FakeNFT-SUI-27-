@@ -12,9 +12,11 @@ struct StatsUserProfileView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var viewModel: StatsUserProfileViewModelProtocol
+    @Bindable private var user: User
     
     init(viewModel: StatsUserProfileViewModelProtocol? = nil, user: User) {
-        self.viewModel = viewModel ?? StatsUserProfileViewModel(user: user)
+        self.viewModel = viewModel ?? StatsUserProfileViewModel()
+        self.user = user
     }
     
     private let userNameFont: Font = .system(size: 22, weight: .bold)
@@ -37,10 +39,10 @@ struct StatsUserProfileView: View {
                 }
     
                 .navigationDestination(isPresented: $viewModel.showUserNFTCollection) {
-                    UserNFTCollectionView(userCollection: viewModel.user.NFTCollectionIDs)
+                    UserNFTCollectionView(userCollection: user.NFTCollectionIDs)
                 }
                 .navigationDestination(isPresented: $viewModel.showWebView) {
-                    UserProfileWebView(url: viewModel.user.website)
+                    UserProfileWebView(url: user.website)
                 }
     }
     
@@ -61,12 +63,23 @@ struct StatsUserProfileView: View {
     
     private var userProfileImageAndName: some View {
         HStack(spacing: 16) {
-            Image(data: viewModel.user.imageData, placeholder: "person.circle.fill")
-                .resizable()
-                .scaledToFill()
-                .frame(maxWidth: 70)
-                .clipShape(Circle())
-            Text("\(viewModel.user.name)")
+            Group {
+                if !user.isLoadingImage {
+                    Image(data: user.imageData, placeholder: "person.circle.fill")
+                        .resizable()
+                        .scaledToFill()
+                } else {
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.yaLightGrey)
+                        ProgressView()
+                    }
+                }
+            }
+            .frame(maxWidth: 70)
+            .clipShape(Circle())
+            
+            Text("\(user.name)")
                 .font(userNameFont)
                 .foregroundStyle(.yaBlack)
             Spacer()
@@ -75,7 +88,7 @@ struct StatsUserProfileView: View {
     }
     
     private var userProfileDescription: some View {
-        Text(viewModel.user.description)
+        Text(user.description)
             .font(userDescriptionFont)
             .foregroundStyle(.yaBlack)
             .multilineTextAlignment(.leading)
@@ -101,7 +114,7 @@ struct StatsUserProfileView: View {
             viewModel.showUserNFTCollection = true
         } label: {
             HStack {
-                Text("Коллекция NFT (\(viewModel.user.NFTCount))")
+                Text("Коллекция NFT (\(user.NFTCount))")
                     .font(userNFTCollectionButtonTextFont)
                 Spacer()
                 Image(systemName: "chevron.forward")

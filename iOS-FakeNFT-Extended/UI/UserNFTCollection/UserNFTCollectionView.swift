@@ -36,13 +36,39 @@ struct UserNFTCollectionView: View {
                         UserCollectionNFTCell(element: element, isLiked: isLiked, isInCart: isInCart, likeButtonAction: { cellLikeButtonAction(id: element.id) }, cartButtonAction: { cellCartButtonAction(id: element.id) })
                     }
                 }
+                .disabled(viewModel.isLoading || viewModel.isError)
+                .padding(.horizontal, 16)
+                .padding(.top, 20)
             }
-            .padding(.horizontal, 16)
-            .padding(.top, 20)
-            .disabled(viewModel.isLoading)
-            
-            CommonProgressView()
-                .opacity(viewModel.isLoading ? 1 : 0)
+            .refreshable {
+                Task {
+                    await viewModel.fetchUserCollection()
+                }
+            }
+            Group {
+                Rectangle()
+                    .fill(Color.uniBackground)
+                    .ignoresSafeArea()
+                CommonProgressView()
+            }
+            .opacity(viewModel.isLoading ? 1 : 0)
+        }
+        .overlay {
+            ZStack {
+                Rectangle()
+                    .fill(Color.uniBackground)
+                    .ignoresSafeArea()
+                CommonAlertView(alertTitle: "Не удалось получить данные",
+                cancelAction: {
+                    dismiss()
+                },
+                resetAction: {
+                    Task {
+                        await viewModel.fetchUserCollection()
+                    }
+                })
+            }
+            .opacity(viewModel.isError ? 1 : 0)
         }
         .onAppear {
             viewModel.insertModelContext(context: context)

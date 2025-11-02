@@ -37,12 +37,26 @@ struct UserCollectionNFTCell: View {
     
     private var imageWithLikeButton: some View {
         ZStack(alignment: .topTrailing) {
-            Image(data: element.imageData, placeholder: "person.slash")
-                .resizable()
-                .scaledToFill()
-                .frame(height: 108)
+            AsyncImage(url: element.imageUrl) { phase in
+                Group {
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    } else if phase.error != nil {
+                        Image(systemName: "person.slash")
+                            .resizable()
+                            .scaledToFill()
+                    }
+                    else {
+                        ProgressView()
+                    }
+                }
                 .background(Color.yaLightGrey)
+                .frame(height: 108)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+
             Button(action: {
                 likeButtonAction?()
             }) {
