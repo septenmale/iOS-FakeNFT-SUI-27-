@@ -42,7 +42,7 @@ struct StatsUserProfileView: View {
                     UserNFTCollectionView(userCollection: user.NFTCollectionIDs)
                 }
                 .navigationDestination(isPresented: $viewModel.showWebView) {
-                    UserProfileWebView(url: user.website)
+                    CommonWebView(url: user.website)
                 }
     }
     
