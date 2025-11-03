@@ -193,16 +193,6 @@
     "Hello, ProfileView!" : {
 
     },
-    "Loading NFTs..." : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Загрузка NFT"
-          }
-        }
-      }
-    },
     "Pay" : {
       "localizations" : {
         "ru" : {

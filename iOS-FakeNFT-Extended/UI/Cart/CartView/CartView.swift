@@ -17,7 +17,7 @@ struct CartView: View {
                 if let viewModel {
                     if viewModel.isLoading {
                         VStack {
-                            ProgressView("Loading NFTs...")
+                            CommonProgressView()
                         }
                     } else if viewModel.items.isEmpty {
                         EmptyCartView()
@@ -28,7 +28,7 @@ struct CartView: View {
                         }
                     }
                 } else {
-                    ProgressView()
+                    CommonProgressView()
                 }
                 if showDeleteConfirmation, let item = itemToDelete {
                     DeleteConfirmationView(
@@ -51,6 +51,7 @@ struct CartView: View {
                     .onDisappear { hideTabBar = false }
                 }
             }
+            .background(.yaWhite)
             .task {
                 if viewModel == nil {
                     viewModel = CartViewModel(context: context)
@@ -133,7 +134,7 @@ struct CartView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("\(viewModel.items.count) NFT")
                     .font(.regular15)
-                    .foregroundColor(.uniBackground)
+                    .foregroundColor(.yaBlack)
                 
                 Text("\(viewModel.totalPrice, specifier: "%.2f") ETH")
                     .font(.bold17)

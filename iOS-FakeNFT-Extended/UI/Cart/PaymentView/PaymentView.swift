@@ -14,13 +14,14 @@ struct PaymentView: View {
         VStack {
             if viewModel.isLoading {
                 Spacer()
-                ProgressView()
+                CommonProgressView()
             } else {
                 currencyList
             }
             Spacer()
             payBlock
         }
+        .background(.yaWhite)
         .navigationTitle(String(localized: "Select payment method"))
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
@@ -81,13 +82,14 @@ struct PaymentView: View {
                     .navigationTitle(String(localized: "User agreement:"))
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden(true)
+                    .background(.yaWhite)
                     .toolbar(.hidden, for: .tabBar)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             CartBackButton(color: .yaBlack)
                         }
                     }
-                    .ignoresSafeArea()
+                    .ignoresSafeArea(edges: .bottom)
             } label: {
                 Text(String(localized: "User agreement"))
                     .font(.regular13)

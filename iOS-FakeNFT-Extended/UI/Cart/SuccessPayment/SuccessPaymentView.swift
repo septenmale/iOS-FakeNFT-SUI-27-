@@ -11,6 +11,7 @@ struct SuccessPaymentView: View {
             Spacer()
             button
         }
+        .background(.yaWhite)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }

@@ -9,6 +9,9 @@ struct EmptyCartView: View {
                 .foregroundColor(.yaBlack)
             Spacer()
         }
+        .frame(maxWidth: .infinity)
+        .background(.yaWhite)
+        .ignoresSafeArea(.all)
     }
 }
 

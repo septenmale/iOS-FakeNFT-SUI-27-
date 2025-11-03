@@ -15,6 +15,7 @@ struct CartCell: View {
         .padding(16)
         .contentShape(Rectangle())
         .buttonStyle(.plain)
+        .background(.yaWhite)
     }
     
     private var image: some View {

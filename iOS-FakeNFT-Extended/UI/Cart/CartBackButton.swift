@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CartBackButton: View {
     @Environment(\.dismiss) private var dismiss
-    var color: Color = .primary
+    var color: Color = .yaBlack
     
     var body: some View {
         Button {
