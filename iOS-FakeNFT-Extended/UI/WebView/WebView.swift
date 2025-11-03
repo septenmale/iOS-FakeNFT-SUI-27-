@@ -1,3 +1,10 @@
+//
+//  WebView.swift
+//  iOS-FakeNFT-Extended
+//
+//  Created by Owi Lover on 11/3/25.
+//
+
 import SwiftUI
 import WebKit
 

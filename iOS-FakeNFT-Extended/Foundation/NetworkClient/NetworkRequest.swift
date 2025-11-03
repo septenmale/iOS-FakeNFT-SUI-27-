@@ -13,6 +13,13 @@ protocol NetworkRequest {
     var dto: Encodable? { get }
 }
 
+protocol NetworkRequestCart {
+    var endpoint: URL? { get }
+    var httpMethod: HttpMethod { get }
+    var dto: Encodable? { get }
+    var rawBody: Data? { get }
+}
+
 // default values
 extension NetworkRequest {
     var httpMethod: HttpMethod { .get }

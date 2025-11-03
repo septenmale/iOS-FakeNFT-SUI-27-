@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Font {
-
+    
     // Medium Fonts
     static var medium10: Font {
         Font.system(size: 10, weight: .medium)
