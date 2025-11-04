@@ -55,7 +55,6 @@
 		F821EC3A2E9D05900003AB8A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821EC392E9D05900003AB8A /* CartViewModel.swift */; };
 		F821EC3D2E9D06DD0003AB8A /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821EC3C2E9D06D60003AB8A /* CartItem.swift */; };
 		F821EC3F2E9D08420003AB8A /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821EC3E2E9D083A0003AB8A /* CartCell.swift */; };
-		F821EC952E9E71CE0003AB8A /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821EC942E9E71B70003AB8A /* View+Extensions.swift */; };
 		F821EC972E9E72030003AB8A /* CornerRadiusShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821EC962E9E71F70003AB8A /* CornerRadiusShape.swift */; };
 		F821ECC72E9FC4B60003AB8A /* EmptyCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821ECC62E9FC4A30003AB8A /* EmptyCartView.swift */; };
 		F821ECC92E9FC82E0003AB8A /* DeleteConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821ECC82E9FC8110003AB8A /* DeleteConfirmationView.swift */; };
@@ -142,7 +141,6 @@
 		F821EC392E9D05900003AB8A /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		F821EC3C2E9D06D60003AB8A /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		F821EC3E2E9D083A0003AB8A /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
-		F821EC942E9E71B70003AB8A /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		F821EC962E9E71F70003AB8A /* CornerRadiusShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusShape.swift; sourceTree = "<group>"; };
 		F821ECC62E9FC4A30003AB8A /* EmptyCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCartView.swift; sourceTree = "<group>"; };
 		F821ECC82E9FC8110003AB8A /* DeleteConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteConfirmationView.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				F82D526F2EA24ED400FEF184 /* PaymentView */,
 				F82D526E2EA24EC000FEF184 /* CartView */,
 				F82D526D2EA24E8E00FEF184 /* Helpers */,
-				F821EC942E9E71B70003AB8A /* View+Extensions.swift */,
 				F82D53AB2EAF854D00FEF184 /* CartSortSettings.swift */,
 			);
 			path = Cart;
@@ -652,7 +649,6 @@
 				ABC5E1992C31F666002B4068 /* Fonts.swift in Sources */,
 				ABC5E1CF2C32041D002B4068 /* NftDetailViewController.swift in Sources */,
 				ABC5E1B72C31FC70002B4068 /* ServicesAssembly.swift in Sources */,
-				F821EC952E9E71CE0003AB8A /* View+Extensions.swift in Sources */,
 				F821ECC72E9FC4B60003AB8A /* EmptyCartView.swift in Sources */,
 				F82D53A82EAE742D00FEF184 /* CartRequests.swift in Sources */,
 				F821EC3A2E9D05900003AB8A /* CartViewModel.swift in Sources */,

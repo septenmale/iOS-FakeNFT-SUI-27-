@@ -1,14 +1,8 @@
-//
-//  UserNFTCollectionViewModel.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/25/25.
-//
 import SwiftUI
 import SwiftData
 
 @Observable class UserNFTCollectionViewModel: UserNFTCollectionViewModelProtocol {
-        
+    
     let userCollectionIds: [String]
     
     private let model: UserNFTCollectionModelProtocol
@@ -41,7 +35,7 @@ import SwiftData
     }
     
     func toggleLikeNFT(id: String, likedNFTs: [LikedNft]) {
-
+        
         guard let context else { return }
         
         defer {

@@ -1,10 +1,3 @@
-//
-//  StatsView.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/11/25.
-//
-
 import SwiftUI
 
 struct StatsView: View {
@@ -48,10 +41,10 @@ struct StatsView: View {
                     .fill(Color.uniBackground)
                     .ignoresSafeArea()
                 CommonAlertView(alertTitle: "Не удалось получить данные",
-                cancelAction: {
+                                cancelAction: {
                     viewModel.isError = false
                 },
-                resetAction: {
+                                resetAction: {
                     Task {
                         await viewModel.fetchUsers()
                     }
@@ -72,13 +65,13 @@ struct StatsView: View {
                     Button {
                         viewModel.showActionSheet = true
                     } label: {
-                        Image(systemName: "text.justify.leading")
+                        Image("sort")
                             .foregroundStyle(.yaBlack)
                     }
                 }
             }
             .toolbar(viewModel.isTabBarVisible, for: .tabBar)
-            
+        
             .actionSheet(isPresented: $viewModel.showActionSheet) {
                 ActionSheet(title: Text("Сортировка"), buttons: [
                     .default(Text("По имени")) {

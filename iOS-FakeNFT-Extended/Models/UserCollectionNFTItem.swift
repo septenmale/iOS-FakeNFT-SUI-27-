@@ -1,10 +1,3 @@
-//
-//  UserCollectionNFTItem.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 11/1/25.
-//
-
 import Foundation
 
 struct UserCollectionNFTItem {

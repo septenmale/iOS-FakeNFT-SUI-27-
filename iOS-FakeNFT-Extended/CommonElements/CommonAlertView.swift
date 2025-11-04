@@ -1,10 +1,3 @@
-//
-//  CommonAlertView.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/31/25.
-//
-
 import SwiftUI
 
 struct CommonAlertView: View {
@@ -17,7 +10,7 @@ struct CommonAlertView: View {
     private let alertFont: Font = .bold17
     private let cancelButtonFont: Font = .regular17
     private let resetButtonFont: Font = .bold17
-
+    
     var body: some View {
         ZStack {
             Rectangle()

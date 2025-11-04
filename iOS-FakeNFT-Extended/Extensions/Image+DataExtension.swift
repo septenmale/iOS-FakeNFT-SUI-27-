@@ -1,10 +1,3 @@
-//
-//  Image+DataExtension.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/19/25.
-//
-
 import SwiftUI
 import UIKit
 

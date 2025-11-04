@@ -1,10 +1,3 @@
-//
-//  CommonWebView.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 11/03/25.
-//
-
 import SwiftUI
 
 struct CommonWebView: View {

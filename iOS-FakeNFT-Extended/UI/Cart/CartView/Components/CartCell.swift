@@ -59,7 +59,7 @@ struct CartCell: View {
     
     private var deleteIcon: some View {
         Button(action: onDeleteTapped) {
-            Image("cartOn")
+            Image("cartOnExtra")
                 .foregroundColor(.yaBlack)
         }
         .buttonStyle(.plain)

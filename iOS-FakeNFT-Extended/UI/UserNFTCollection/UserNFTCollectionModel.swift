@@ -1,9 +1,3 @@
-//
-//  UserNFTCollectionModel.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/25/25.
-//
 import Foundation
 
 actor UserNFTCollectionModel: UserNFTCollectionModelProtocol {
@@ -58,4 +52,3 @@ actor UserNFTCollectionModel: UserNFTCollectionModelProtocol {
 protocol UserNFTCollectionModelProtocol {
     func fetchUserCollection(idsArray nfts: [String]) async throws -> [UserCollectionNFTJsonModel]
 }
-

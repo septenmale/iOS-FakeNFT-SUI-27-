@@ -1,12 +1,4 @@
-//
-//  StatsCell.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/14/25.
-//
-
 import SwiftUI
-//import Kingfisher
 
 struct StatsCell: View {
     
@@ -56,5 +48,3 @@ struct StatsCell: View {
         }
     }
 }
-
-

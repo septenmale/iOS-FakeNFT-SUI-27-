@@ -1,10 +1,3 @@
-//
-//  User.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 11/1/25.
-//
-
 import SwiftUI
 
 @Observable final class User: Identifiable, Sendable {

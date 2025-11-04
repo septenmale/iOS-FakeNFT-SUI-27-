@@ -1,10 +1,3 @@
-//
-//  CommonDataProvider.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/31/25.
-//
-
 import Foundation
 
 class CommonDataProvider {
@@ -38,7 +31,7 @@ class CommonDataProvider {
     }
     
     func fetchData() async throws -> Data {
-
+        
         let (data, response) = try await URLSession.shared.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {

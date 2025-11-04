@@ -1,10 +1,3 @@
-//
-//  UserNFTCollectionView.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/23/25.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -14,7 +7,7 @@ struct UserNFTCollectionView: View {
     
     @Query private var likedNFTs: [LikedNft]
     @Query private var inCartNFTs: [InCartNft]
-        
+    
     @State private var viewModel: UserNFTCollectionViewModelProtocol
     
     private let gridColumns = Array(repeating: GridItem(), count: 3)
@@ -59,10 +52,10 @@ struct UserNFTCollectionView: View {
                     .fill(Color.uniBackground)
                     .ignoresSafeArea()
                 CommonAlertView(alertTitle: "Не удалось получить данные",
-                cancelAction: {
+                                cancelAction: {
                     dismiss()
                 },
-                resetAction: {
+                                resetAction: {
                     Task {
                         await viewModel.fetchUserCollection()
                     }

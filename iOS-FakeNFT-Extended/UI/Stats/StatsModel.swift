@@ -1,10 +1,3 @@
-//
-//  StatsModel.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/30/25.
-//
-
 import Foundation
 
 enum APIError: Error {

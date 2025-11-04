@@ -1,10 +1,3 @@
-//
-//  UserCollectionNFTJsonModel.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 11/1/25.
-//
-
 struct UserCollectionNFTJsonModel: Sendable, Decodable, Identifiable {
     let createdAt: String?
     let name: String?

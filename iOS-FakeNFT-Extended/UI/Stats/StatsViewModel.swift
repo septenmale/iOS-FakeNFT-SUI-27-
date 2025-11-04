@@ -1,10 +1,3 @@
-//
-//  StatsViewModel.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/14/25.
-//
-
 import SwiftUI
 
 enum StatsFilterStrategy: String {
@@ -96,14 +89,14 @@ enum StatsFilterStrategy: String {
 
 @Observable final class StatsViewModelMock: StatsViewModelProtocol {
     func fetchUsers() async {
-
+        
     }
     
     var isError: Bool = false
     
     var isLoading: Bool = false
     
-
+    
     var showActionSheet = false
     var showUserProfileView = false
     var isTabBarVisible: Visibility = .visible
@@ -139,7 +132,7 @@ enum StatsFilterStrategy: String {
         User(name: "Olga",
              imageData: nil,
              NFTCount: 132),
-//      MARK: данные иконки имитируют реальные изображения
+        //      MARK: данные иконки имитируют реальные изображения
         User(name: "Garry",
              imageData: UIImage(systemName: "person.circle.fill",
                                 withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(.uniRed).heicData(),
@@ -182,7 +175,7 @@ protocol StatsViewModelProtocol {
     var showActionSheet: Bool { get set }
     var showUserProfileView: Bool { get set }
     var isTabBarVisible: Visibility { get set }
-
+    
     var selectedUser: User? { get }
     var filteredUsers: [User] { get }
     

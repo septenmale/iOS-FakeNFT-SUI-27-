@@ -1,10 +1,3 @@
-//
-//  StatsUserProfileView.swift
-//  iOS-FakeNFT-Extended
-//
-//  Created by Owi Lover on 10/16/25.
-//
-
 import SwiftUI
 
 struct StatsUserProfileView: View {
@@ -25,25 +18,25 @@ struct StatsUserProfileView: View {
     private let userNFTCollectionButtonTextFont: Font = .system(size: 17, weight: .bold)
     
     var body: some View {
-            mainView
-                .navigationBarBackButtonHidden()
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            dismiss()
-                        } label: {
-                            Image(systemName: "chevron.backward")
-                        }
-                        .foregroundStyle(.yaBlack)
+        mainView
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward")
                     }
+                    .foregroundStyle(.yaBlack)
                 }
-    
-                .navigationDestination(isPresented: $viewModel.showUserNFTCollection) {
-                    UserNFTCollectionView(userCollection: user.NFTCollectionIDs)
-                }
-                .navigationDestination(isPresented: $viewModel.showWebView) {
-                    CommonWebView(url: user.website)
-                }
+            }
+        
+            .navigationDestination(isPresented: $viewModel.showUserNFTCollection) {
+                UserNFTCollectionView(userCollection: user.NFTCollectionIDs)
+            }
+            .navigationDestination(isPresented: $viewModel.showWebView) {
+                CommonWebView(url: user.website)
+            }
     }
     
     private var mainView: some View {
