@@ -37,7 +37,7 @@ struct StatsCell: View {
                     }
                 }
             }
-            .frame(width: 28)
+            .frame(width: 28, height: 28)
             .clipShape(Circle())
             
             Text(userName)

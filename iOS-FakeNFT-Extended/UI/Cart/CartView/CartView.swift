@@ -14,6 +14,8 @@ struct CartView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
+                Rectangle()
+                    .fill(Color.yaWhite)
                 if let viewModel {
                     if viewModel.isLoading {
                         VStack {
