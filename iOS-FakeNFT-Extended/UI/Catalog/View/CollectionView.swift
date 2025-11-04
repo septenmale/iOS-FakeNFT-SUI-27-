@@ -119,6 +119,7 @@ struct CollectionView: View {
         .navigationDestination(isPresented: $showAuthorWebView) {
             CommonWebView(url: "https://practicum.yandex.ru/")
         }
+        .background(Color.yaWhite)
     }
     
     private func toggleLike(for id: String) {

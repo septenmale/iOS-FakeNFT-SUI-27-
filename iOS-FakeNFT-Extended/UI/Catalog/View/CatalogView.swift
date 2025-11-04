@@ -11,71 +11,76 @@ struct CatalogView: View {
     
     var body: some View {
         NavigationView {
-            ZStack(alignment: .bottom) {
-                if isLoading {
-                    ProgressView("Загрузка коллекций...")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    ScrollView {
-                        LazyVStack(spacing: 8) {
-                            Color.clear
-                                .frame(height: 35)
-                            
-                            ForEach(sortedCatalog, id: \.title) { item in
-                                NavigationLink(
-                                    destination: CollectionView(
-                                        collection: item,
-                                        coverImage: coverImages[item.catalogImage]
-                                    )
-                                ) {
-                                    CatalogCell(
-                                        item: item,
-                                        coverImage: coverImages[item.catalogImage]
-                                    )
-                                    .padding(.horizontal, 16)
+            ZStack {
+                Rectangle()
+                    .fill(Color(.yaWhite))
+                    .ignoresSafeArea()
+                ZStack(alignment: .bottom) {
+                    if isLoading {
+                        CommonProgressView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else {
+                        ScrollView {
+                            LazyVStack(spacing: 8) {
+                                Color.clear
+                                    .frame(height: 35)
+                                
+                                ForEach(sortedCatalog, id: \.title) { item in
+                                    NavigationLink(
+                                        destination: CollectionView(
+                                            collection: item,
+                                            coverImage: coverImages[item.catalogImage]
+                                        )
+                                    ) {
+                                        CatalogCell(
+                                            item: item,
+                                            coverImage: coverImages[item.catalogImage]
+                                        )
+                                        .padding(.horizontal, 16)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
                                 }
-                                .buttonStyle(PlainButtonStyle())
                             }
                         }
                     }
-                }
-                
-                if isShowingSortOptions {
-                    Color.black.opacity(0.3)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                isShowingSortOptions = false
-                            }
-                        }
-                        .transition(.opacity)
-                }
-                
-                VStack {
+                    
                     if isShowingSortOptions {
-                        SortPanelView(
-                            selectedSortOption: $selectedSortOption,
-                            isShowingSortOptions: $isShowingSortOptions
-                        )
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
-                        
-                        CloseButtonView(isShowingSortOptions: $isShowingSortOptions)
+                        Color.black.opacity(0.3)
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    isShowingSortOptions = false
+                                }
+                            }
+                            .transition(.opacity)
+                    }
+                    
+                    VStack {
+                        if isShowingSortOptions {
+                            SortPanelView(
+                                selectedSortOption: $selectedSortOption,
+                                isShowingSortOptions: $isShowingSortOptions
+                            )
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                            
+                            CloseButtonView(isShowingSortOptions: $isShowingSortOptions)
+                        }
                     }
                 }
-            }
-            .navigationBarHidden(true)
-            .overlay(
-                sortButton
-                    .padding(.top, 2)
-                    .padding(.trailing, 9),
-                alignment: .topTrailing
-            )
-            .animation(.easeInOut(duration: 0.3), value: isShowingSortOptions)
-            .onAppear {
-                loadCatalogData()
-            }
-            .onChange(of: selectedSortOption) { _, _ in
-                applySorting()
+                .navigationBarHidden(true)
+                .overlay(
+                    sortButton
+                        .padding(.top, 2)
+                        .padding(.trailing, 9),
+                    alignment: .topTrailing
+                )
+                .animation(.easeInOut(duration: 0.3), value: isShowingSortOptions)
+                .onAppear {
+                    loadCatalogData()
+                }
+                .onChange(of: selectedSortOption) { _, _ in
+                    applySorting()
+                }
             }
         }
     }

@@ -67,7 +67,7 @@ struct CollectionCell: View {
                 Spacer()
                 
                 Button(action: onCartTap) {
-                    Image(isInCart ? "cartOn" : "cartOff")
+                    Image(isInCart ? "cartOnExtra" : "cartOffExtra")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20)
